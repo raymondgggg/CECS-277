@@ -1,9 +1,12 @@
-// 
+// CECS 277 - Sec 10 Tu
+// Raymond Guevara Lozano 
+// Li, Johnerson
 
 import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {
+        CheckInput checkInput;
         String zipCode = getZip();// the program
         System.out.println();
         printBarCode(zipCode);
