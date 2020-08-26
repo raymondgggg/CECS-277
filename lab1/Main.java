@@ -1,6 +1,6 @@
 // CECS 277 - Sec 10 Tu
 // Raymond Guevara Lozano 
-// Li, Johnerson
+// Johnerson Li
 
 import java.util.Scanner;
 
@@ -86,7 +86,7 @@ public class Main{
             System.out.print("|.|..");
         }
     }
-    
+
     public static boolean isValid(String s){
         if (s.length() == 5){
             return false;
