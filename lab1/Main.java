@@ -86,8 +86,7 @@ public class Main{
             System.out.print("|.|..");
         }
     }
-
-
+    
     public static boolean isValid(String s){
         if (s.length() == 5){
             return false;
