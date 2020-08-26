@@ -1,13 +1,15 @@
+// 
+
 import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {
-        String zipCode = getZip();
+        String zipCode = getZip();// the program
         System.out.println();
         printBarCode(zipCode);
     }
 
-    public static void printBarCode(String zip){
+    public static void printBarCode(String zip){ 
         int sum = getSum(zip);
         int checkDigit = calcCheckDigit(sum);
         int digit;
