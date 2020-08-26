@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {
-        CheckInput checkInput;
+        
         String zipCode = getZip();// the program
         System.out.println();
         printBarCode(zipCode);
@@ -42,9 +42,14 @@ public class Main{
     }
 
     public static String getZip(){ // method to prompt user for zip code and return code as string
+        int stringLen = 5;
+        String usrZip;
         Scanner usrInput = new Scanner(System.in);
-        System.out.print("Please enter your five digit zip code: ");
-        String usrZip = usrInput.nextLine();
+        do{
+            System.out.print("Please enter your five digit zip code: ");
+            usrZip = usrInput.nextLine();
+
+        }while(usrZip.length() != stringLen);
         usrInput.close();
         return usrZip;
     }
@@ -79,6 +84,16 @@ public class Main{
         }
         else if (d ==9){
             System.out.print("|.|..");
+        }
+    }
+
+
+    public static boolean isValid(String s){
+        if (s.length() == 5){
+            return false;
+        }
+        else{
+            return true;
         }
     }
 }
