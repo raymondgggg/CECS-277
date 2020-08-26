@@ -82,7 +82,7 @@ public class Main{
         else if (d == 8){
             System.out.print("|..|.");
         }
-        else (d ==9){
+        else{
             System.out.print("|.|..");
         }
     }
