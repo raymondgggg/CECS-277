@@ -27,7 +27,7 @@ public class Main{
             }
             else if(updatedPosition == 'a'){
                 grid[bugYPosition][bugXPosition] = 'x';
-                bugXPosition++;
+                bugXPosition--;
             }
             else if (updatedPosition == 's'){
                 grid[bugYPosition][bugXPosition] = 'x';
