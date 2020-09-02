@@ -45,7 +45,7 @@ public class Main {
                 }
             }
         }
-        System.out.println("Congradulations! You have made it to the end and will have good fortune for the rest of your life!!!! XD");
+        System.out.println("Congrats! You have made it to the end and will have good fortune for the rest of your life!!!! XD");
     }
 
     public static char move(int xPosition, int yPosition) {
