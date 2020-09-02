@@ -98,7 +98,7 @@ public class Main {
     }
 
     /** 
-     * Takes in grid and current position of user to update and display
+     * Takes in grid and new position of user to update and display
      * the grid according to the new position the user chose in 
      * move() method.
      * @param grid[][]
