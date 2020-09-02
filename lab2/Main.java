@@ -1,6 +1,6 @@
 // Raymond Guevara
 //Johnerson Li
-//CECS 277-Sec 10
+//CECS 277-Sec 10 Tu
 
 import java.util.Scanner;
 import java.lang.Character;
