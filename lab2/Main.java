@@ -24,18 +24,22 @@ public class Main{
             if(updatedPosition == 'w'){
                 grid[bugYPosition][bugXPosition] = 'x';
                 bugYPosition--;
+                System.out.println("x,y: " + "(" + bugXPosition + ", " + bugYPosition + ")");
             }
             else if(updatedPosition == 'a'){
                 grid[bugYPosition][bugXPosition] = 'x';
                 bugXPosition--;
+                System.out.println("x,y: " + "(" + bugXPosition + ", " + bugYPosition + ")");
             }
             else if (updatedPosition == 's'){
                 grid[bugYPosition][bugXPosition] = 'x';
                 bugYPosition++;
+                System.out.println("x,y: " + "(" + bugXPosition + ", " + bugYPosition + ")");
             }
             else if (updatedPosition == 'd'){
                 grid[bugYPosition][bugXPosition] = 'x';
                 bugXPosition++;
+                System.out.println("x,y: " + "(" + bugXPosition + ", " + bugYPosition + ")");
             }
 
         }
@@ -48,19 +52,19 @@ public class Main{
         charInput = Character.toLowerCase(charInput); // to make sure the character is lower case for while loop comparisons
 
         while(charInput != 'w' || charInput != 'a' || charInput != 's' || charInput != 'd'){// go into loop at least once to check if charInput is actually valid
-            if(charInput == 'w' && xPosition > 0){
+            if(charInput == 'w' && yPosition > 0){
                 System.out.println();
                 return charInput;
             }
-            else if(charInput == 'a' && yPosition > 0){
+            else if(charInput == 'a' && xPosition > 0){
                 System.out.println();
                 return charInput;
             }
-            else if(charInput == 's' && xPosition < 9){
+            else if(charInput == 's' && yPosition < 9){
                 System.out.println();
                 return charInput;
             }
-            else if (charInput == 'd' && yPosition < 9){
+            else if (charInput == 'd' && xPosition < 9){
                 System.out.println();
                 return charInput;
             }
