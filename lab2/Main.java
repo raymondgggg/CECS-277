@@ -20,7 +20,7 @@ public class Main{
         
         while (bugXPosition !=9 && bugYPosition != 9){
             displayGrid(grid, bugXPosition, bugYPosition);
-            char updatedPosition = menu(bugXPosition, bugYPosition);
+            char updatedPosition = move(bugXPosition, bugYPosition);
             if(updatedPosition == 'w'){
                 grid[bugYPosition][bugXPosition] = 'x';
                 bugYPosition--;
@@ -41,7 +41,7 @@ public class Main{
         }
     }
 
-    public static char menu(int xPosition, int yPosition){
+    public static char move(int xPosition, int yPosition){
         System.out.println("Which Direction:\nW. Up\nA. Left\nS. Down\nD. Right");
         Scanner usrInput = new Scanner(System.in);
         char charInput = usrInput.next().charAt(0);
