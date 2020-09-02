@@ -1,5 +1,8 @@
-import java.util.Scanner;
+// Raymond Guevara
+//Johnerson Li
+//CECS 277-Sec 10
 
+import java.util.Scanner;
 import java.lang.Character;
 
 public class Main {
