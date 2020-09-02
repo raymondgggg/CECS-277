@@ -18,12 +18,12 @@ public class Main{
         int digit;
         System.out.print("|");
         for (int i = 0; i < zip.length(); i++){
-            digit = Integer.parseInt(String.valueOf(zip.charAt(i))); // get the individial int value of the zipcode string 
+            digit = Integer.parseInt(String.valueOf(zip.charAt(i))); // get the individial int value of the zipcode string 93552 
             printDigit(digit);
         }
         printDigit(checkDigit);
         System.out.println("|");
-    }
+    }        
 
     public static int calcCheckDigit(int sum){ // method to calculate the check digit
         int roundUp = ((sum / 10) * 10) + 10;
@@ -31,12 +31,12 @@ public class Main{
         return checkDigit;
     }
 
-    public static int getSum(String zipCode){// method to get the sum of the zipcode digits
+    public static int getSum(String zipCode){// method to get the sum of the zipcode digits 
         int digit;
         int sum = 0;
         for(int i = 0; i < zipCode.length(); i++){
             digit = Integer.parseInt(String.valueOf(zipCode.charAt(i))); // gets individual digit as int value
-            sum += digit;
+            sum += digit; //sum = sum + digit 
         }
         return sum;
     }

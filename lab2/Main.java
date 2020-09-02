@@ -1,7 +1,7 @@
 // Raymond Guevara
 //Johnerson Li
 //CECS 277-Sec 10 Tu
-
+// lab 2
 import java.util.Scanner;
 import java.lang.Character;
 
