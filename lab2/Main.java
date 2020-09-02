@@ -10,7 +10,7 @@ public class Main {
     /** 
      * Uses no command line arguments for this program. Intializes 2D game grid
      * and uses while loop to repeatedly call the move() and displayGrid() methods
-     * to repeatedly get new user position and update and display grid until user
+     * to get new user position and update and display grid until user
      * reaches position (9,9) of game grid.
      * @param args
      */
