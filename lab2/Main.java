@@ -3,7 +3,6 @@ import java.util.Scanner;
 import java.lang.Character;
 public class Main{
     public static void main(String[] args) {
-        
         char [][] grid ={
                             {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'},
                             {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'},
@@ -14,10 +13,30 @@ public class Main{
                             {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'},
                             {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'},
                             {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'},
-                            {'.', '.', '.', '.', '.', '.', '.', '.', '.', '.'}
+                            {'.', '.', '.', '.', '.', '.', '.', '.', '.', 'f'}
                         };
         int bugXPosition = 0;
         int bugYPosition = 0;
+        
+        
+        displayGrid(grid, bugYPosition, bugXPosition);
+        char updatedPosition = menu(bugXPosition, bugYPosition);
+        if(updatedPosition == 'w'){
+            bugYPosition--;
+        }
+        else if(updatedPosition == 'a'){
+            bugXPosition++;
+        }
+        else if (updatedPosition == 's'){
+            bugYPosition++;
+        }
+        else if (updatedPosition == 'd'){
+            bugXPosition++;
+        }
+        System.out.println(bugXPosition + " " + bugYPosition);
+
+
+
     }
 
     public static char menu(int xPosition, int yPosition){
@@ -51,5 +70,17 @@ public class Main{
         return charInput;
     }
 
+    public static void displayGrid(char grid[][], int xPosition, int yPosition){
+        if (xPosition == 0 && yPosition == 0){
+            grid[xPosition][yPosition] = 'o';
+            for (int i = 0; i < grid.length; i++){
+                for (int j = 0; j < grid.length; j++){
+                    System.out.print(grid[i][j] + " ");
+                }
+                System.out.println();
+            }
+        
+        }
+    }
     
 }
