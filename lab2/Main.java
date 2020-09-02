@@ -6,6 +6,14 @@ import java.util.Scanner;
 import java.lang.Character;
 
 public class Main {
+    
+    /** 
+     * Uses no command line arguments for this program. Intializes 2D game grid
+     * and uses while loop to repeatedly call the move() and displayGrid() methods
+     * to repeatedly get new user position and update and display grid until user
+     * reaches position (9,9) of game grid.
+     * @param args
+     */
     public static void main(String[] args) {
         char[][] grid = {
                             { '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' },
@@ -56,7 +64,7 @@ public class Main {
     /** 
      * Takes in user's current positon as well as prompts user for next move.
      * Verifies move is legal then returns char value of next move to be used to 
-     * update the grid respectively in main method.
+     * update the grid respectively in main() method.
      * @param xPosition
      * @param yPosition
      * @return char
@@ -92,7 +100,7 @@ public class Main {
     /** 
      * Takes in grid and current position of user to update and display
      * the grid according to the new position the user chose in 
-     * move method.
+     * move() method.
      * @param grid[][]
      * @param xPosition
      * @param yPosition
