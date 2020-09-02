@@ -18,7 +18,7 @@ public class Main{
         int bugXPosition = 0;
         int bugYPosition = 0;
         
-        while (grid[9][9] == 'f'){
+        while (bugXPosition != 9 && bugYPosition != 9){
             displayGrid(grid, bugXPosition, bugYPosition);
             char updatedPosition = move(bugXPosition, bugYPosition);
             if(updatedPosition == 'w'){
