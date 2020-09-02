@@ -4,7 +4,8 @@ import java.lang.Character;
 
 public class Main {
     public static void main(String[] args) {
-        char[][] grid = { { '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' },
+        char[][] grid = {
+                { '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' },
                 { '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' },
                 { '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' },
                 { '.', '.', '.', '.', '.', '.', '.', '.', '.', '.' },
@@ -47,18 +48,22 @@ public class Main {
         }
         System.out.println("Congrats! You have made it to the end and will have good fortune for the rest of your life!!!! XD");
     }
-
+    
+    /** 
+     * Takes in user's current positon as well as prompts user for next move.
+     * Verifies move is legal then returns char value of next move to be used to 
+     * update the grid respectively in main method.
+     * @param xPosition
+     * @param yPosition
+     * @return char
+     */
     public static char move(int xPosition, int yPosition) {
         System.out.println("Which Direction:\nW. Up\nA. Left\nS. Down\nD. Right");
         Scanner usrInput = new Scanner(System.in);
         char charInput = usrInput.next().charAt(0);
         charInput = Character.toLowerCase(charInput); // to make sure the character is lower case for while loop
-                                                      // comparisons
 
-        while (charInput != 'w' || charInput != 'a' || charInput != 's' || charInput != 'd') {// go into loop at least
-                                                                                              // once to check if
-                                                                                              // charInput is actually
-                                                                                              // valid
+        while (charInput != 'w' || charInput != 'a' || charInput != 's' || charInput != 'd') { //validation of char inputted
             if (charInput == 'w' && yPosition > 0) {
                 System.out.println();
                 return charInput;
@@ -70,9 +75,9 @@ public class Main {
                 return charInput;
             } else if (charInput == 'd' && xPosition < 9) {
                 System.out.println();
-
                 return charInput;
             }
+            //conditions if user puts invalid char or pick invalid position
             System.out.println("\nSorry, please enter a valid character or move");
             System.out.println("Which Direction:\nW. Up\nA. Left\nS. Down\nD. Right");
             charInput = usrInput.next().charAt(0);
@@ -80,6 +85,14 @@ public class Main {
         return charInput;
     }
 
+    /** 
+     * Takes in grid and current position of user to update and display
+     * the grid according to the new position the user chose in 
+     * move method.
+     * @param grid[][]
+     * @param xPosition
+     * @param yPosition
+     */
     public static void displayGrid(char grid[][], int xPosition, int yPosition) {
         grid[yPosition][xPosition] = 'o'; // positions are flipped due to how 2D arrays work
         for (int i = 0; i < grid.length; i++) {
