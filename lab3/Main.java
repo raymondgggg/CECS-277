@@ -6,7 +6,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
-    
     /** 
      * Main method for the program, where the Arraylists are intiailized an user is prompted 
      * to input the different options to see the stats for the state populations
@@ -53,7 +52,7 @@ public class Main {
                 }
             }
             catch (InputMismatchException e){
-                System.out.println("please enter valid input");
+                System.out.println("please enter valid input\n");
                 usrInput.next();
             }
         }
@@ -68,7 +67,6 @@ public class Main {
         System.out.println("3.Display Total US population\n4.Display State With Population Greater than\n5.Quit");
     }
 
-    
     /** 
      * Method that reads the StatePop.txt file and puts states and 
      * populations in corresponding parallel ArrayLists for states and populations
@@ -93,7 +91,6 @@ public class Main {
         }
     }
 
-    
     /**
      * Method that displays the states and corresponding populatons
      * on their own line
@@ -106,7 +103,6 @@ public class Main {
         }
     }
 
-    
     /**
      * Method that takes in ArrayList for populations and returns the sum
      * of populations 
@@ -123,7 +119,6 @@ public class Main {
         return sum;
     }
 
-    
     /**
      * Method that takes in greaterThan parameter and compares state populations 
      * with parameter, displays states and populations with values greater than 
@@ -144,7 +139,6 @@ public class Main {
         }
     }
 
-    
     /**
      * Method that takes in states ArrayList and populations ArrayList and 
      * sorts both lists according to population (non-decreasing order)
@@ -170,7 +164,6 @@ public class Main {
         }while(swapped);
     }
 
-    
     /**
      * Method that takes in states ArrayList and populations ArrayList and 
      * sorts both lists according to alphabetical order
