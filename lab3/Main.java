@@ -1,25 +1,33 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         ArrayList<String> states = new ArrayList<String>();
         ArrayList<Integer> populations = new ArrayList<Integer>();
-        menu();
-        readFile(states, populations);
-        
-        displayState(states, populations);
-        int sum = totalPopulation(populations);
-        System.out.printf("%,d\n\n", sum);
-        
-        int greaterThan = 25000000;
-        
-        populationGreater(greaterThan, states, populations);
-        System.out.println("\n\n");
-        sortAlphabetical(states, populations);
-        displayState(states, populations);
+        Scanner usrInput = new Scanner(System.in);
+        ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1,2,3,4,5));
+
+        do{
+            menu();
+            int num = usrInput.nextInt();
+            while(!options.contains(num)){
+                System.out.println("Please enter one of the above options");
+                num = usrInput.nextInt();
+            }
+            if (num == options.get(0)){
+                sortAlphabetical(states, populations);
+            }
+            else if(num == options.get(1)){
+                sortPopulation(states, populations);
+            }
+            else
+            
+
+        }while(usrInput.nextInt() != 5);
     }
 
     public static void menu() {
@@ -101,10 +109,7 @@ public class Main {
                     states.set(i + 1, stateSwap);
                     swapped = true;
                 }
-
             }
         }while(swapped);
-
     }
-
 }
