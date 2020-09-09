@@ -16,7 +16,9 @@ public class Main {
         
         int greaterThan = 25000000;
         populationGreater(greaterThan, states, populations);
-        
+        System.out.println("\n\n");
+        sortPopulation(states, populations);
+        displayState(states, populations);
     }
 
     public static void menu() {
@@ -42,9 +44,9 @@ public class Main {
         }
     }
 
-    public static void displayState(ArrayList<String> states, ArrayList<Integer> population){
+    public static void displayState(ArrayList<String> states, ArrayList<Integer> populations){
         for (int i = 0; i < states.size(); i++) {
-            System.out.printf("%-25s %,10d \n", states.get(i),population.get(i));
+            System.out.printf("%-25s %,10d \n", states.get(i),populations.get(i));
         }
     }
 
@@ -64,21 +66,23 @@ public class Main {
         }
     }
 
-    public static void sort(ArrayList<Integer> list){
+    public static void sortPopulation(ArrayList<String> states,ArrayList<Integer> populations){
         boolean swapped = false;
         do{
             swapped = false;
-            for (int i =0; i < list.size(); i++){
-                if(list.get(i) > list.get(i+1)){
-                    int swap = list.get(i);
-                    list.set(i,list.get(i+1));
-                    list.set(i+1, swap);
+            for (int i =0; i < populations.size() - 1; i++){
+                if(populations.get(i) > populations.get(i+1)){
+                    int popSwap = populations.get(i);
+                    populations.set(i,populations.get(i+1));
+                    populations.set(i+1, popSwap);
+
+                    String stateSwap = states.get(i);
+                    states.set(i, states.get(i+1));
+                    states.set(i+1, stateSwap);
                     swapped = true;
                 }
             }
         }while(swapped);
     }
 
-
-    
 }
