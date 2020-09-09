@@ -9,12 +9,12 @@ public class Main {
         ArrayList<Integer> population = new ArrayList<Integer>();
         menu();
         readFile(states, population);
-        System.out.println(states.toString());
-        System.out.println(population.toString() + "\n");
+        
+        displayState(states, population);
 
-        for (int i = 0; i < states.size(); i++){
-            System.out.println(states.get(i) + " " + population.get(i));
-        }
+      
+
+       
         
     }
 
@@ -38,6 +38,12 @@ public class Main {
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void displayState(ArrayList<String> states, ArrayList<Integer> population){
+        for (int i = 0; i < states.size(); i++) {
+            System.out.printf("%-25s %10d \n", states.get(i),population.get(i));
         }
     }
 }
