@@ -30,7 +30,7 @@ public class Main {
 
         int bugXPosition = 0;
         int bugYPosition = 0;
-
+                            
         while (!(bugXPosition == 10 && bugYPosition == 10)) {
             if (bugXPosition == 9 && bugYPosition == 9) { // update grid when we are in position (9,9)
                 grid[bugYPosition][bugXPosition] = 'x';
