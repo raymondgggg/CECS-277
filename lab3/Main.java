@@ -43,7 +43,7 @@ public class Main {
 
     public static void displayState(ArrayList<String> states, ArrayList<Integer> population){
         for (int i = 0; i < states.size(); i++) {
-            System.out.printf("%-25s %10d \n", states.get(i),population.get(i));
+            System.out.printf("%-25s %,10d \n", states.get(i),population.get(i));
         }
     }
 }
