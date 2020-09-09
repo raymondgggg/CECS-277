@@ -18,7 +18,7 @@ public class Main {
         
         populationGreater(greaterThan, states, populations);
         System.out.println("\n\n");
-        sortPopulation(states, populations);
+        sortAlphabetical(states, populations);
         displayState(states, populations);
     }
 
@@ -84,6 +84,27 @@ public class Main {
                 }
             }
         }while(swapped);
+    }
+
+    public static void sortAlphabetical(ArrayList<String> states, ArrayList<Integer> populations){
+        boolean swapped = false;
+        do{
+            swapped = false;
+            for (int i = 0; i < states.size() - 1; i++){
+                if(states.get(i).compareTo(states.get(i+1)) > 0){
+                    int popSwap = populations.get(i);
+                    populations.set(i, populations.get(i + 1));
+                    populations.set(i + 1, popSwap);
+
+                    String stateSwap = states.get(i);
+                    states.set(i, states.get(i + 1));
+                    states.set(i + 1, stateSwap);
+                    swapped = true;
+                }
+
+            }
+        }while(swapped);
+
     }
 
 }
