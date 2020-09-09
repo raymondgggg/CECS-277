@@ -5,10 +5,16 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
+    
+    /** 
+     * Main method for the program, where the Arraylists are intiailized an user is prompted 
+     * to input the different options to see the stats for the state populations
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         ArrayList<String> states = new ArrayList<String>();
         ArrayList<Integer> populations = new ArrayList<Integer>();
-        
+
         Scanner usrInput = new Scanner(System.in);
 
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1,2,3,4,5));
@@ -44,12 +50,22 @@ public class Main {
         }while(num != options.get(4));
         usrInput.close();
     }
-
+    /**
+     * method that repeatedly prints out the menu
+     * 
+     */
     public static void menu() {
         System.out.println("State Stats\n1.Display Sorted States\n2.Display Sorted Populations");
         System.out.println("3.Display Total US population\n4.Display State With Population Greater than\n5.Quit");
     }
 
+    
+    /** 
+     * Method that reads the StatePop.txt file and puts states and 
+     * populations in corresponding parallel ArrayLists for states and populations
+     * @param states ArrayList that contains states and territories
+     * @param populations Arraylist that contains populations of states and territories
+     */
     public static void readFile(ArrayList<String> states, ArrayList<Integer> populations) {
         File inputFile = new File("StatePops.txt");
         try {
@@ -68,12 +84,28 @@ public class Main {
         }
     }
 
+    
+    /**
+     * Method that displays the states and corresponding populatons
+     * on their own line
+     * @param states ArrayList that contains states and territories
+     * @param populations Arraylist that contains populations of states and territories
+     */
     public static void displayState(ArrayList<String> states, ArrayList<Integer> populations){
         for (int i = 0; i < states.size(); i++) {
             System.out.printf("%-25s %,10d \n", states.get(i),populations.get(i));
         }
     }
 
+    
+    /**
+     * Method that takes in ArrayList for populations and returns the sum
+     * of populations 
+     * @param populations Arraylist that contains populations of states and
+     *                    territories
+     * 
+     * @return int sum of the populations for all states and territories
+     */
     public static int totalPopulation(ArrayList<Integer> populations){
         int sum = 0;
         for(int statepop : populations){
@@ -82,6 +114,19 @@ public class Main {
         return sum;
     }
 
+    
+    /**
+     * Method that takes in greaterThan parameter and compares state populations 
+     * with parameter, displays states and populations with values greater than 
+     * greaterThan paramerter on own line
+     * @param greaterThan value that user enters to find states with populations
+     *                    greater than value
+     * 
+     * @param states      ArrayList that contains states and territories
+     * 
+     * @param populations Arraylist that contains populations of states and
+     *                    territories
+     */
     public static void populationGreater(int greaterThan, ArrayList<String> states, ArrayList<Integer> populations) {
         for (int i = 0; i < states.size(); i++) {
             if (populations.get(i) > greaterThan) {
@@ -90,6 +135,13 @@ public class Main {
         }
     }
 
+    
+    /**
+     * Method that takes in states ArrayList and populations ArrayList and 
+     * sorts both lists according to population (non-decreasing order)
+     * @param states      ArrayList that contains states and territories
+     * @param populations Arraylist that contains populations of states and territories
+     */
     public static void sortPopulation(ArrayList<String> states,ArrayList<Integer> populations){
         boolean swapped = false;
         do{
@@ -109,6 +161,14 @@ public class Main {
         }while(swapped);
     }
 
+    
+    /**
+     * Method that takes in states ArrayList and populations ArrayList and 
+     * sorts both lists according to alphabetical order
+     * @param states      ArrayList that contains states and territories
+     * @param populations Arraylist that contains populations of states and
+     *                    territories
+     */
     public static void sortAlphabetical(ArrayList<String> states, ArrayList<Integer> populations){
         boolean swapped = false;
         do{
