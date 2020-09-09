@@ -11,13 +11,14 @@ public class Main {
         Scanner usrInput = new Scanner(System.in);
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1,2,3,4,5));
         int num;
+        readFile(states, populations);
         do{
             menu();
-             num = usrInput.nextInt();
-            // while(!options.contains(num)){
-            //     System.out.println("Please enter one of the above options");
-            //     num = usrInput.nextInt();
-            // }
+            num = usrInput.nextInt();
+            while(!options.contains(num)){
+                System.out.println("Please enter one of the above options");
+                num = usrInput.nextInt();
+            }
             if (num == 1){
                 sortAlphabetical(states, populations);
                 displayState(states, populations);
@@ -39,6 +40,7 @@ public class Main {
                 System.out.println();
             }
         }while(num != options.get(4));
+        usrInput.close();
     }
 
     public static void menu() {
