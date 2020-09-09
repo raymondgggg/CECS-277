@@ -12,9 +12,10 @@ public class Main {
         
         displayState(states, populations);
         int sum = totalPopulation(populations);
-        System.out.printf("%,d\n", sum);
+        System.out.printf("%,d\n\n", sum);
         
         int greaterThan = 25000000;
+        
         populationGreater(greaterThan, states, populations);
         System.out.println("\n\n");
         sortPopulation(states, populations);
