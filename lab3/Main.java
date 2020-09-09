@@ -56,6 +56,14 @@ public class Main {
         return sum;
     }
 
+    public static void populationGreater(int greaterThan, ArrayList<String> states, ArrayList<Integer> populations) {
+        for (int i = 0; i < states.size(); i++) {
+            if (populations.get(i) > greaterThan) {
+                System.out.printf("%s   %,d\n", states.get(i), populations.get(i));
+            }
+        }
+    }
+
     public static void sort(ArrayList<Integer> list){
         boolean swapped = false;
         do{
@@ -71,12 +79,6 @@ public class Main {
         }while(swapped);
     }
 
-    public static void populationGreater(int greaterThan,ArrayList<String> states, ArrayList<Integer> populations){
-        for (int i = 0; i < states.size(); i++){
-            if (populations.get(i) > greaterThan){
-                System.out.printf("%s   %,d\n", states.get(i), populations.get(i));
-            }
-        }
-    }
+
     
 }
