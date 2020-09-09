@@ -10,7 +10,10 @@ public class Main {
         menu();
         readFile(states, population);
         System.out.println(states.toString());
-        System.out.println(population.toString());
+        System.out.println(population.toString() + "\n");
+
+        System.out.println(states.size());
+        System.out.println(population.size());
         
     }
 
