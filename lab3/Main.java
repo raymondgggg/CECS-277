@@ -38,7 +38,7 @@ public class Main {
                 System.out.println();
             }
             else if (num == options.get(2)){
-                System.out.println("US Population: " + totalPopulation(populations));
+                System.out.printf("US Population: %,d\n", totalPopulation(populations));
                 System.out.println();
             }
             else if (num == options.get(3)){
