@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -18,38 +19,46 @@ public class Main {
         Scanner usrInput = new Scanner(System.in);
 
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1,2,3,4,5));
-        int num;
+        int num = 0;
         readFile(states, populations);
-        do{
+         
+        boolean repeat = true;
+        while(repeat && num != options.get(4)){
             menu();
-            num = usrInput.nextInt();
-            while(!options.contains(num)){
-                System.out.println("Please enter one of the above options");
+            try{
                 num = usrInput.nextInt();
+                while (!options.contains(num)) {
+                    System.out.println("Please enter one of the above options");
+                    num = usrInput.nextInt();
+                }
+                if (num == options.get(0)) {
+                    sortAlphabetical(states, populations);
+                    displayState(states, populations);
+                    System.out.println();
+                } else if (num == options.get(1)) {
+                    sortPopulation(states, populations);
+                    displayState(states, populations);
+                    System.out.println();
+                } else if (num == options.get(2)) {
+                    System.out.printf("US Population: %,d\n", totalPopulation(populations));
+                    System.out.println();
+                } else if (num == options.get(3)) {
+                    System.out.print("Enter Population: ");
+                    int greaterThan = usrInput.nextInt();
+                    populationGreater(greaterThan, states, populations);
+                    System.out.println();
+                } else if (num == options.get(4)){
+                    repeat = false;
+                    usrInput.close();
+                }
             }
-            if (num == options.get(0)){
-                sortAlphabetical(states, populations);
-                displayState(states, populations);
-                System.out.println();
+            catch (InputMismatchException e){
+                System.out.println("please enter valid input");
+                usrInput.next();
             }
-            else if (num == options.get(1)){
-                sortPopulation(states, populations);
-                displayState(states, populations);
-                System.out.println();
-            }
-            else if (num == options.get(2)){
-                System.out.printf("US Population: %,d\n", totalPopulation(populations));
-                System.out.println();
-            }
-            else if (num == options.get(3)){
-                System.out.print("Enter Population: ");
-                int greaterThan = usrInput.nextInt();
-                populationGreater(greaterThan, states, populations);
-                System.out.println();
-            }
-        }while(num != options.get(4));
-        usrInput.close();
+        }
     }
+
     /**
      * method that repeatedly prints out the menu
      * 
