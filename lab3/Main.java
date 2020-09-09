@@ -12,8 +12,9 @@ public class Main {
         System.out.println(states.toString());
         System.out.println(population.toString() + "\n");
 
-        System.out.println(states.size());
-        System.out.println(population.size());
+        for (int i = 0; i < states.size(); i++){
+            System.out.println(states.get(i) + " " + population.get(i));
+        }
         
     }
 
@@ -29,10 +30,10 @@ public class Main {
             while (input.hasNextLine()){
                 String line = input.nextLine();
                 int i = 0;
-                while(!Character.isDigit(line.charAt(i))){
+                while(!Character.isDigit(line.charAt(i))){ //while loop to check where digit starts
                     i++;
                 }
-                states.add(line.substring(0,i));
+                states.add(line.substring(0,i-1));
                 population.add(Integer.parseInt(line.substring(i)));
             }
         } catch (FileNotFoundException e) {
