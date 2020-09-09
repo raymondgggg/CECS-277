@@ -53,4 +53,20 @@ public class Main {
         }
         return sum;
     }
+
+    public static void sort(ArrayList<Integer> list){
+        boolean swapped = false;
+        do{
+            swapped = false;
+            for (int i =0; i < list.size(); i++){
+                if(list.get(i) > list.get(i+1)){
+                    int swap = list.get(i);
+                    list.set(i,list.get(i+1));
+                    list.set(i+1, swap);
+                    swapped = true;
+                }
+            }
+        }while(swapped);
+    }
+    
 }
