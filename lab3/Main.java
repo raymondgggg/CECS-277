@@ -9,6 +9,8 @@ public class Main {
         ArrayList<Integer> population = new ArrayList<Integer>();
         menu();
         readFile(states, population);
+        states.toString();
+        population.toString();
     }
 
     public static void menu() {
@@ -20,6 +22,16 @@ public class Main {
         File inputFile = new File("StatePops.txt");
         try {
             Scanner input = new Scanner(inputFile);
+            while (input.hasNextLine()){
+                String line = input.nextLine();
+                int i = 0;
+                while(!Character.isDigit(line.charAt(i))){
+                    i++;
+                }
+                states.add(line.substring(0,i));
+                population.add(Integer.parseInt(line.substring(i)));
+                input.close();
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
