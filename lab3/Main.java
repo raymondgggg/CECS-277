@@ -8,7 +8,9 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<String> states = new ArrayList<String>();
         ArrayList<Integer> populations = new ArrayList<Integer>();
+        
         Scanner usrInput = new Scanner(System.in);
+
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1,2,3,4,5));
         int num;
         readFile(states, populations);
@@ -19,21 +21,21 @@ public class Main {
                 System.out.println("Please enter one of the above options");
                 num = usrInput.nextInt();
             }
-            if (num == 1){
+            if (num == options.get(0)){
                 sortAlphabetical(states, populations);
                 displayState(states, populations);
                 System.out.println();
             }
-            else if (num == 2){
+            else if (num == options.get(1)){
                 sortPopulation(states, populations);
                 displayState(states, populations);
                 System.out.println();
             }
-            else if (num == 3){
+            else if (num == options.get(2)){
                 System.out.println("US Population: " + totalPopulation(populations));
                 System.out.println();
             }
-            else if (num == 4){
+            else if (num == options.get(3)){
                 System.out.print("Enter Population: ");
                 int greaterThan = usrInput.nextInt();
                 populationGreater(greaterThan, states, populations);
