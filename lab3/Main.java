@@ -9,8 +9,9 @@ public class Main {
         ArrayList<Integer> population = new ArrayList<Integer>();
         menu();
         readFile(states, population);
-        states.toString();
-        population.toString();
+        System.out.println(states.toString());
+        System.out.println(population.toString());
+        
     }
 
     public static void menu() {
@@ -30,7 +31,6 @@ public class Main {
                 }
                 states.add(line.substring(0,i));
                 population.add(Integer.parseInt(line.substring(i)));
-                input.close();
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
