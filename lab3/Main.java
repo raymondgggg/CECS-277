@@ -14,6 +14,9 @@ public class Main {
         int sum = totalPopulation(populations);
         System.out.printf("%,d\n", sum);
         
+        int greaterThan = 25000000;
+        populationGreater(greaterThan, states, populations);
+        
     }
 
     public static void menu() {
@@ -45,7 +48,6 @@ public class Main {
         }
     }
 
-
     public static int totalPopulation(ArrayList<Integer> populations){
         int sum = 0;
         for(int statepop : populations){
@@ -67,6 +69,14 @@ public class Main {
                 }
             }
         }while(swapped);
+    }
+
+    public static void populationGreater(int greaterThan,ArrayList<String> states, ArrayList<Integer> populations){
+        for (int i = 0; i < states.size(); i++){
+            if (populations.get(i) > greaterThan){
+                System.out.printf("%s   %,d\n", states.get(i), populations.get(i));
+            }
+        }
     }
     
 }
