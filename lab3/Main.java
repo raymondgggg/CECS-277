@@ -10,29 +10,40 @@ public class Main {
         ArrayList<Integer> populations = new ArrayList<Integer>();
         Scanner usrInput = new Scanner(System.in);
         ArrayList<Integer> options = new ArrayList<>(Arrays.asList(1,2,3,4,5));
-
+        int num;
         do{
             menu();
-            int num = usrInput.nextInt();
-            while(!options.contains(num)){
-                System.out.println("Please enter one of the above options");
-                num = usrInput.nextInt();
-            }
-            if (num == options.get(0)){
+             num = usrInput.nextInt();
+            // while(!options.contains(num)){
+            //     System.out.println("Please enter one of the above options");
+            //     num = usrInput.nextInt();
+            // }
+            if (num == 1){
                 sortAlphabetical(states, populations);
+                displayState(states, populations);
+                System.out.println();
             }
-            else if(num == options.get(1)){
+            else if (num == 2){
                 sortPopulation(states, populations);
+                displayState(states, populations);
+                System.out.println();
             }
-            else
-            
-
-        }while(usrInput.nextInt() != 5);
+            else if (num == 3){
+                System.out.println("US Population: " + totalPopulation(populations));
+                System.out.println();
+            }
+            else if (num == 4){
+                System.out.print("Enter Population: ");
+                int greaterThan = usrInput.nextInt();
+                populationGreater(greaterThan, states, populations);
+                System.out.println();
+            }
+        }while(num != options.get(4));
     }
 
     public static void menu() {
         System.out.println("State Stats\n1.Display Sorted States\n2.Display Sorted Populations");
-        System.out.println("3.Display Total US population\n4.Display State With Population Greater than\n6.Quit");
+        System.out.println("3.Display Total US population\n4.Display State With Population Greater than\n5.Quit");
     }
 
     public static void readFile(ArrayList<String> states, ArrayList<Integer> populations) {
