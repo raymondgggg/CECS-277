@@ -13,9 +13,13 @@ public class Main {
             }
         }
 
-        displayGrid(charArray);
-        rectArrayList.add(getRect(1));
-        fillRect(charArray, rectArrayList.get(0), rectangleChars[0]);
+        System.out.print("How many rectangles would you like to draw (1-5)? ");
+        int recCount = getIntRange(1, 5);
+
+        for (int i = 1; i<= recCount; i++){
+            rectArrayList.add(getRect(i));
+            fillRect(charArray, rectArrayList.get(i-1), rectangleChars[i-1]);
+        }
         displayGrid(charArray);
 
     }
