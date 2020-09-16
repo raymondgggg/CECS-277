@@ -64,10 +64,10 @@ public class Main {
         int x = getIntRange(1, 30);
         System.out.print("\nPlease enter y location of of rectangle " + currentRect + " (1-30): ");
         int y = getIntRange(1, 30);
-        System.out.print("\nPlease enter the width of rectangle " + currentRect + "(1-25): ");
-        int width = getIntRange(1, 25);
-        System.out.print("\nPlease enter the height of rectangle " + currentRect + " (1-25): ");
-        int height = getIntRange(1, 25);
+        System.out.print("\nPlease enter the width of rectangle " + currentRect + " (1-" + (30-x + 1) + "): ");
+        int width = getIntRange(1, 30 - x + 1);
+        System.out.print("\nPlease enter the height of rectangle " + currentRect + " (1-" + (30- y + 1) + "): ");
+        int height = getIntRange(1, 30 - y + 1);
 
         Rect r = new Rect(x, y, width, height);
         return r;
