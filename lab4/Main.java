@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,6 +13,8 @@ public class Main {
         }
 
         displayGrid(charArray);
+        int x = getRect(2);
+        System.out.println(x);
 
 
     }
@@ -25,8 +28,33 @@ public class Main {
         }
     }
 
-    public static Rect getRect(int usrRectCount){
-        
+    public static int getRect(int currentRect){
+        System.out.print("Please enter x location of rectangle " + currentRect + " (1-30): ");
+        int x = getIntRange(1, 30);
+
+        Rect r = new Rect(1, 2, 3, 4);
+        return x;
+
+    }
+
+    public static int getIntRange(int low, int high) {
+        Scanner in = new Scanner(System.in);
+        int input = 0;
+        boolean valid = false;
+        while (!valid) {
+            if (in.hasNextInt()) {
+                input = in.nextInt();
+                if (input <= high && input >= low) {
+                    valid = true;
+                } else {
+                    System.out.println("Invalid Range.");
+                }
+            } else {
+                in.next(); // clear invalid string
+                System.out.println("Invalid Input.");
+            }
+        }
+        return input;
     }
 
 }
