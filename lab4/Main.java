@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         char[][] charArray = new char[30][30]; //initialization of 30x30 grid of chars 
         ArrayList<Rect> rectArrayList = new ArrayList<Rect>(); //intialization of rect array
+        char[] rectangleChars = {'O', 'X', '*', '#', '-'};
 
         for (int i = 0; i < charArray.length; i++){ // populate the array with the char '.'
             for (int j =0; j < charArray.length; j++){
@@ -13,7 +14,7 @@ public class Main {
         }
 
         displayGrid(charArray);
-        
+
 
 
     }
@@ -42,6 +43,10 @@ public class Main {
 
     }
 
+    public static void fillRect(char grid[][], Rect r, char c){
+        
+    }
+
     public static int getIntRange(int low, int high) {
         Scanner in = new Scanner(System.in);
         int input = 0;
@@ -61,6 +66,8 @@ public class Main {
         }
         return input;
     }
+
+
 
 }
 
