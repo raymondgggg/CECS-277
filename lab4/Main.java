@@ -25,7 +25,7 @@ public class Main {
         }
     }
 
-    public static Rect(int usrRectCount){
+    public static Rect getRect(int usrRectCount){
         
     }
 
