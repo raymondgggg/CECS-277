@@ -28,12 +28,18 @@ public class Main {
         }
     }
 
-    public static int getRect(int currentRect){
+    public static Rect getRect(int currentRect){
         System.out.print("Please enter x location of rectangle " + currentRect + " (1-30): ");
         int x = getIntRange(1, 30);
+        System.out.print("\nPlease enter y location of of rectangle " + currentRect + " (1-30): ");
+        int y = getIntRange(1, 30);
+        System.out.print("\nPlease enter the width of rectangel " + currentRect + "(1-25): ");
+        int width = getIntRange(1, 25);
+        System.out.print("\nPlease enter the height of rectangle " + currentRect + " (1-25): ");
+        int height = getIntRange(1, 25);
 
-        Rect r = new Rect(1, 2, 3, 4);
-        return x;
+        Rect r = new Rect(x, y, width, height);
+        return r;
 
     }
 
@@ -47,11 +53,11 @@ public class Main {
                 if (input <= high && input >= low) {
                     valid = true;
                 } else {
-                    System.out.println("Invalid Range.");
+                    System.out.println("Invalid Range. Enter again please: ");
                 }
             } else {
                 in.next(); // clear invalid string
-                System.out.println("Invalid Input.");
+                System.out.println("Invalid Input. Enter again please: ");
             }
         }
         return input;
