@@ -15,9 +15,8 @@ public class Main {
 
         displayGrid(charArray);
         rectArrayList.add(getRect(1));
-        fillRect(charArray, rectArrayList[0], rectangleChars[0]);
-
-
+        fillRect(charArray, rectArrayList.get(0), rectangleChars[0]);
+        displayGrid(charArray);
 
     }
 
