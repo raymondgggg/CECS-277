@@ -14,6 +14,8 @@ public class Main {
         }
 
         displayGrid(charArray);
+        rectArrayList.add(getRect(1));
+        fillRect(charArray, rectArrayList[0], rectangleChars[0]);
 
 
 
@@ -43,8 +45,12 @@ public class Main {
 
     }
 
-    public static void fillRect(char grid[][], Rect r, char c){
-        
+    public static void fillRect(char grid[][], Rect rectangle, char c){
+        for (int i = 0; i<rectangle.getWidth(); i++){
+            for(int j = 0; j<rectangle.getHeight(); j++){
+                grid[(rectangle.getY()-1) + j][(rectangle.getX()-1) + i] = c;
+            }
+        }
     }
 
     public static int getIntRange(int low, int high) {
