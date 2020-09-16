@@ -16,7 +16,7 @@ public class Main {
     public static void main(String[] args) {
         char[][] charArray = new char[30][30]; //initialization of 30x30 grid of chars 
         ArrayList<Rect> rectArrayList = new ArrayList<Rect>(); //intialization of rect array
-        char[] rectangleChars = {'O', 'X', '*', '#', '-'};
+        char[] rectangleChars = {'O', 'X', '*', '#', '-'}; //up to 5 chars used 
 
         for (int i = 0; i < charArray.length; i++){ // populate the array with the char '.'
             for (int j =0; j < charArray.length; j++){
@@ -32,7 +32,6 @@ public class Main {
             fillRect(charArray, rectArrayList.get(i-1), rectangleChars[i-1]);
         }
         displayGrid(charArray);
-
     }
 
     
@@ -57,7 +56,7 @@ public class Main {
      * make sure that the fields are within the rang for the 2D
      * array.
      * @param currentRect Number of current rectangle that is being instantiated
-     * @return r Rectangle object made after getting fields for object from user
+     * @return rect Rectangle object made after getting fields for object from user
      */
     public static Rect getRect(int currentRect){
         System.out.print("Please enter x location of rectangle " + currentRect + " (1-30): ");
@@ -69,9 +68,8 @@ public class Main {
         System.out.print("\nPlease enter the height of rectangle " + currentRect + " (1-" + (30- y + 1) + "): ");
         int height = getIntRange(1, 30 - y + 1);
 
-        Rect r = new Rect(x, y, width, height);
-        return r;
-
+        Rect rect = new Rect(x, y, width, height);
+        return rect;
     }
 
     
@@ -119,5 +117,3 @@ public class Main {
         return input;
     }
 }
-
-
