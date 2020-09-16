@@ -13,8 +13,7 @@ public class Main {
         }
 
         displayGrid(charArray);
-        int x = getRect(2);
-        System.out.println(x);
+        
 
 
     }
