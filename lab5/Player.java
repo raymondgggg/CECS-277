@@ -70,6 +70,28 @@ public class Player {
         return false;
     }
 
+    
+    /** Method for comparing if two of the dice in the array are the same
+     *  updates player score by 1
+     * @return boolean returns true of two values are the same, false otherwise
+     */
+    public boolean twoOfKind(){
+        boolean die1ToDie2 = this.dice[0].getDieValue() == this.dice[1].getDieValue();
+        boolean die2ToDie3 = this.dice[1].getDieValue() == this.dice[2].getDieValue();
+        boolean die1ToDie3 = this.dice[0].getDieValue() == this.dice[2].getDieValue();
+        if (die1ToDie2 || die2ToDie3 || die1ToDie3){
+            this.points += 1;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean 
+
+    
+    /** 
+     * @param i
+     */
     public void setDice(int i){
         for (int j = 0; j < this.dice.length; j++){
             this.dice[j].setDieValue(i);
