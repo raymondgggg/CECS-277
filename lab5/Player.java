@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /** Player Class - representation of player for dice game */
 public class Player {
     /** Array of dice the player will use in game */
@@ -87,11 +89,15 @@ public class Player {
     }
 
     public boolean series(){
-        int 
-
+        int diceValues[] = {this.dice[0].getDieValue(), this.dice[1].getDieValue(), this.dice[3].getDieValue()};
+        Arrays.sort(diceValues);
+        if ((diceValues[1] - diceValues[0] == 1) && (diceValues[2] - diceValues[0] == 2)){
+            this.points += 2;
+            return true;
+        }
+        return false;
     }
 
-    
     /** 
      * @param i
      */
