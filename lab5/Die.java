@@ -53,9 +53,7 @@ public class Die{
             this.dieValue = value;
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     }
 
     

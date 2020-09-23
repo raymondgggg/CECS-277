@@ -55,6 +55,32 @@ public class Player {
         return this.points;
     }
 
+    
+    /** Method for checking if all three dice values are the same, adds + 3 to points
+     *  if all dice are the same
+     * @return boolean value of true returned if all values are the same, false otherwise
+     */
+    public boolean threeOfKind(){
+        boolean die1ToDie2 = this.dice[0].getDieValue() == this.dice[1].getDieValue();
+        boolean die2ToDie3 = this.dice[1].getDieValue() == this.dice[2].getDieValue();
+        if (die1ToDie2 && die2ToDie3){
+            this.points += 3;
+            return true;
+        }
+        return false;
+    }
+
+    public void setDie(int i){
+        for (int j = 0; j < this.dice.length; j++){
+            this.dice[j].setDieValue(i);
+        }
+
+    }
+
+
+
+
+
 
 
 
