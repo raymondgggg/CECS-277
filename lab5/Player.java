@@ -19,7 +19,6 @@ public class Player {
         this.points = 0;
     }
 
-    
     /** String representation of the dice array
      * @return String string of the die values for the game
      */
@@ -30,6 +29,7 @@ public class Player {
         }
         return values;
     }
+
     /**
      * Method to sort the die objects in dice array in non-decreasing order
      */
@@ -46,6 +46,19 @@ public class Player {
             this.dice[i] = temp;
         }
     }
+
+    
+    /** Return the number of points the Player currently has in the game
+     * @return int number of points the player currently has
+     */
+    public int getPoints(){
+        return this.points;
+    }
+
+
+
+
+
 
 
 }

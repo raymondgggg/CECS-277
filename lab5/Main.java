@@ -4,6 +4,6 @@ public class Main {
         System.out.println(player.toString());
         player.sort();
         System.out.println(player.toString());
-
+        System.out.println(player.getPoints());
     }
 }
