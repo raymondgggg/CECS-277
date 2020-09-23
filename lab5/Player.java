@@ -61,8 +61,8 @@ public class Player {
      * @return boolean value of true returned if all values are the same, false otherwise
      */
     public boolean threeOfKind(){
-        boolean die1ToDie2 = this.dice[0].getDieValue() == this.dice[1].getDieValue();
-        boolean die2ToDie3 = this.dice[1].getDieValue() == this.dice[2].getDieValue();
+        boolean die1ToDie2 = this.dice[0].equals(this.dice[1].getDieValue());
+        boolean die2ToDie3 = this.dice[1].equals(this.dice[2].getDieValue());
         if (die1ToDie2 && die2ToDie3){
             this.points += 3;
             return true;
@@ -76,9 +76,9 @@ public class Player {
      * @return boolean returns true of two values are the same, false otherwise
      */
     public boolean twoOfKind(){
-        boolean die1ToDie2 = this.dice[0].getDieValue() == this.dice[1].getDieValue();
-        boolean die2ToDie3 = this.dice[1].getDieValue() == this.dice[2].getDieValue();
-        boolean die1ToDie3 = this.dice[0].getDieValue() == this.dice[2].getDieValue();
+        boolean die1ToDie2 = this.dice[0].equals(this.dice[1].getDieValue());
+        boolean die2ToDie3 = this.dice[1].equals(this.dice[2].getDieValue());
+        boolean die1ToDie3 = this.dice[0].equals(this.dice[2].getDieValue());
         if (die1ToDie2 || die2ToDie3 || die1ToDie3){
             this.points += 1;
             return true;
@@ -86,7 +86,10 @@ public class Player {
         return false;
     }
 
-    public boolean 
+    public boolean series(){
+        int 
+
+    }
 
     
     /** 
