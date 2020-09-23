@@ -89,7 +89,7 @@ public class Player {
     }
 
     public boolean series(){
-        int diceValues[] = {this.dice[0].getDieValue(), this.dice[1].getDieValue(), this.dice[3].getDieValue()};
+        int diceValues[] = {this.dice[0].getDieValue(), this.dice[1].getDieValue(), this.dice[2].getDieValue()};
         Arrays.sort(diceValues);
         if ((diceValues[1] - diceValues[0] == 1) && (diceValues[2] - diceValues[0] == 2)){
             this.points += 2;
@@ -104,6 +104,13 @@ public class Player {
     public void setDice(int i){
         for (int j = 0; j < this.dice.length; j++){
             this.dice[j].setDieValue(i);
+        }
+
+    }
+
+    public void setDice() {
+        for (int j = 0; j < this.dice.length; j++) {
+            this.dice[j].setDieValue(j+1);
         }
 
     }
