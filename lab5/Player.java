@@ -27,7 +27,7 @@ public class Player {
     public String toString(){
         String values = "";
         for (int d = 0; d < this.dice.length; d++){
-            values += "D" + (d+1) + ": " + this.dice[d] + " ";
+            values += "D" + (d+1) + "=" + this.dice[d] + ",";
         }
         return values;
     }
@@ -98,6 +98,7 @@ public class Player {
         }
         return false;
     }
+
     /**method for rolling the dice, prints the values
      * using toString() and determines whether player 
      * met any of the win conditions
@@ -106,23 +107,23 @@ public class Player {
         for (int i = 0; i < this.dice.length; i++) {
             this.dice[i].roll();
         }
-        System.out.print("Rolling Dice..." + toString());
+        System.out.println("Rolling Dice..." + toString());
         if (twoOfKind()){
             System.out.println("You got a pair!");
-            System.out.println("Score = " + this.points + " points");
+            System.out.println("Score = " + this.points + " point(s)");
         }
         else if(threeOfKind()){
             System.out.println("You got three of a kind!");
-            System.out.println("Score = " + this.points + " points");
+            System.out.println("Score = " + this.points + " point(s)");
         }
         else if(series()){
             System.out.println("You got a series of 3!");
-            System.out.println("Score = " + this.points + " points");
+            System.out.println("Score = " + this.points + " point(s)");
         }
         else{
 
             System.out.println("Awww. Too Bad.");
-            System.out.println("Score = " + this.points + " points");
+            System.out.println("Score = " + this.points + " point(s)");
         }
     }
 

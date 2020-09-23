@@ -1,22 +1,16 @@
 public class Main {
     public static void main(String[] args) {
-        Player player = new Player();
+       CheckInput checkInput = new CheckInput();
+       boolean usrInput;
+       Player player = new Player();
+       do {
+           System.out.println("Yahtzee\n");
+           player.takeTurn();
+           System.out.println("Play again? (Y/N) ");
+           usrInput = checkInput.getYesNo();
+       }while(usrInput == true);
+       System.out.println("Game Over.");
+       System.out.println("Final Score = " + player.getPoints() + " point(s)");
 
-        System.out.println(player.toString());
-        player.sort();
-        System.out.println(player.toString());
-        System.out.println(player.getPoints());
-
-        System.out.println(player.twoOfKind());
-        System.out.println(player.threeOfKind());
-        System.out.println(player.getPoints());
-
-        player.setDice(1);
-        System.out.println(player.threeOfKind());
-        System.out.println(player.getPoints());
-        
-        player.setDice();
-        System.out.println(player.series());
-        System.out.println(player.getPoints());
     }
 }
