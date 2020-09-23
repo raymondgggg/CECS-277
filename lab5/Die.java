@@ -12,6 +12,7 @@ public class Die{
         this.sides = 6;
         roll();
     }
+
     /** Constructor - rolls to give the die an initial value
      *  @param s Sets the nubmer of sides of this die
      */
@@ -25,7 +26,6 @@ public class Die{
         roll();
     }
 
-    
     /** Rolls the die
      * @return int
      */
@@ -34,7 +34,6 @@ public class Die{
         return this.dieValue;
     }
 
-    
     /** Retrieve the die's value
      * @return int
      */

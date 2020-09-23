@@ -49,7 +49,6 @@ public class Player {
         }
     }
 
-    
     /** Return the number of points the Player currently has in the game
      * @return int number of points the player currently has
      */
@@ -57,7 +56,6 @@ public class Player {
         return this.points;
     }
 
-    
     /** Method for checking if all three dice values are the same, adds + 3 to points
      *  if all dice are the same
      * @return boolean value of true returned if all values are the same, false otherwise
@@ -72,7 +70,6 @@ public class Player {
         return false;
     }
 
-    
     /** Method for comparing if two of the dice in the array are the same
      *  updates player score by 1
      * @return boolean returns true of two values are the same, false otherwise
@@ -88,6 +85,10 @@ public class Player {
         return false;
     }
 
+    /** Method for checking if the dice values are in a consecutive sequence with 
+     *  one another 
+     * @return boolean
+     */
     public boolean series(){
         int diceValues[] = {this.dice[0].getDieValue(), this.dice[1].getDieValue(), this.dice[2].getDieValue()};
         Arrays.sort(diceValues);
@@ -96,6 +97,33 @@ public class Player {
             return true;
         }
         return false;
+    }
+    /**method for rolling the dice, prints the values
+     * using toString() and determines whether player 
+     * met any of the win conditions
+     */
+    public void takeTurn(){
+        for (int i = 0; i < this.dice.length; i++) {
+            this.dice[i].roll();
+        }
+        System.out.print("Rolling Dice..." + toString());
+        if (twoOfKind()){
+            System.out.println("You got a pair!");
+            System.out.println("Score = " + this.points + " points");
+        }
+        else if(threeOfKind()){
+            System.out.println("You got three of a kind!");
+            System.out.println("Score = " + this.points + " points");
+        }
+        else if(series()){
+            System.out.println("You got a series of 3!");
+            System.out.println("Score = " + this.points + " points");
+        }
+        else{
+
+            System.out.println("Awww. Too Bad.");
+            System.out.println("Score = " + this.points + " points");
+        }
     }
 
     /** 
