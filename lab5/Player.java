@@ -88,7 +88,7 @@ public class Player {
      * @return boolean value true if values are in sequence, false otherwise
      */
     public boolean series(){
-        sort();
+        sort(); //sorting dice by values then comparing differences
         int die2To1Difference = this.dice[1].getDieValue() - this.dice[0].getDieValue();
         int die3To2Difference = this.dice[2].getDieValue() - this.dice[0].getDieValue();
         if ((die2To1Difference == 1) && (die3To2Difference == 2)){
