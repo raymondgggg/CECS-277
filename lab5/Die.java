@@ -22,7 +22,6 @@ public class Die{
         else{
             this.sides = 6;
         }
-
         roll();
     }
 
@@ -65,5 +64,30 @@ public class Die{
      */
     public String toString(){
         return "" + this.dieValue;
+    }
+
+
+    
+    /** Equals method to check if dieValue is equal to value 
+     * @param value Parameter to check equality
+     * @return boolean return value true if dieValue == value, false otherwise.
+     */
+    public boolean equals(int value){
+        if (this.dieValue == value){
+            return true;
+        }
+        return false;
+    }
+
+    
+    /** Method to test if value parameter is less that the dieValue
+     * @param value Parameter to check if Die value less than value
+     * @return boolean return value true if dieValue < value, false otherwise
+     */
+    public boolean lessThan(int value){
+        if (this.dieValue < value){
+            return true;
+        }
+        return false;
     }
 }
