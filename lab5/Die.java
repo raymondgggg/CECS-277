@@ -41,7 +41,6 @@ public class Die{
         return this.dieValue;
     }
 
-    
     /** Allows the value of the die to be set to a particular 
      *  value as long as it is within the number of sides.
      * @param value The value the die will be set to
@@ -55,7 +54,6 @@ public class Die{
         return false;
     }
 
-    
     /** String representation of a Die object 
      * @return String representation of this Die
      */
@@ -63,8 +61,6 @@ public class Die{
         return "" + this.dieValue;
     }
 
-
-    
     /** Equals method to check if dieValue is equal to value 
      * @param value Parameter to check equality
      * @return boolean return value true if dieValue == value, false otherwise.
@@ -76,7 +72,6 @@ public class Die{
         return false;
     }
 
-    
     /** Method to test if value parameter is less that the dieValue
      * @param value Parameter to check if Die value less than value
      * @return boolean return value true if dieValue < value, false otherwise

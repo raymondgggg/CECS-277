@@ -1,5 +1,4 @@
 import java.util.Arrays;
-
 /** Player Class - representation of player for dice game */
 public class Player {
     /** Array of dice the player will use in game */
@@ -22,7 +21,7 @@ public class Player {
     }
 
     /** String representation of the dice array
-     * @return String string of the die values for the game
+     * @return String of the dice values for the game
      */
     public String toString(){
         String values = "";
@@ -87,7 +86,7 @@ public class Player {
 
     /** Method for checking if the dice values are in a consecutive sequence with 
      *  one another 
-     * @return boolean
+     * @return boolean value true if values are in sequence, false otherwise
      */
     public boolean series(){
         int diceValues[] = {this.dice[0].getDieValue(), this.dice[1].getDieValue(), this.dice[2].getDieValue()};
@@ -126,32 +125,4 @@ public class Player {
             System.out.println("Score = " + this.points + " point(s)");
         }
     }
-
-    /** 
-     * @param i
-     */
-    public void setDice(int i){
-        for (int j = 0; j < this.dice.length; j++){
-            this.dice[j].setDieValue(i);
-        }
-
-    }
-
-    public void setDice() {
-        for (int j = 0; j < this.dice.length; j++) {
-            this.dice[j].setDieValue(j+1);
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-
-
 }
