@@ -23,12 +23,13 @@ public class Player {
         for (int i = 0; i < this.dice.length; i++){
             int minIndex = i;
             for (int j = i + 1; j < this.dice.length; j++){
-                if(this.dice[j].lessThan(this.dice[minIndex])){
+                if(this.dice[j].lessThan(this.dice[minIndex].getDieValue())){
                     minIndex = j;
                 }
             }
             Die temp = this.dice[minIndex];
-            
+            this.dice[minIndex] = this.dice[i];
+            this.dice[i] = temp;
         }
 
     }
