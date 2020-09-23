@@ -70,7 +70,7 @@ public class Player {
         return false;
     }
 
-    public void setDie(int i){
+    public void setDice(int i){
         for (int j = 0; j < this.dice.length; j++){
             this.dice[j].setDieValue(i);
         }

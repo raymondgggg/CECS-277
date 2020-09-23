@@ -8,7 +8,7 @@ public class Main {
         System.out.println(player.getPoints());
         System.out.println(player.threeOfKind());
         System.out.println(player.getPoints());
-        player.setDie(1);
+        player.setDice(1);
         System.out.println(player.threeOfKind());
         System.out.println(player.getPoints());
     }
