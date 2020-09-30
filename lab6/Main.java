@@ -10,7 +10,7 @@ import java.util.Scanner;
  */
 public class Main {
     /** Main method where the user is prompted with the choice of
-     *  encrypting or decrypting and based off choices is allowed to input 
+     *  encrypting or decrypting and based off choices is allowed to input text
      *  that will be encrypted to file using either Atbash or Caesar Cipher, Or will
      *  decrypt using either Atbash or Caesar Cipher the text that is present in 
      *  "message.txt"
@@ -62,7 +62,7 @@ public class Main {
     }
     
     /** Method for printing the encrypted string to the file
-     *  message.txt
+     *  "message.txt"
      * @param encryptedMsg string that has been encrypted
      */
     public static void printToFile(String encryptedMsg){
@@ -77,7 +77,6 @@ public class Main {
         }
     }
 
-    
     /** Method for reading from the file "message.txt" and returning
      *  the encrypted text from the file so that it can be used in 
      *  the main method.
@@ -94,6 +93,5 @@ public class Main {
             e.printStackTrace();
             return null;// return value if there is no file
         }
-     
     }
 }
