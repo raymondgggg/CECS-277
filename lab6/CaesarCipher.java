@@ -17,11 +17,11 @@ public class CaesarCipher extends Cipher{
      */
     @Override
     protected char encryptLetter(char c){
-        if (Character.isWhitespace(c)) {
-            return c;
+        if(Character.isAlphabetic((int) c)){
+            char encryptedChar = (char) (((int) c + this.shift - 65) % 26 + 65);
+            return encryptedChar;
         }
-        char encryptedChar = (char) (((int) c + this.shift - 65) % 26 + 65);
-        return encryptedChar;
+        return c;
     }
 
     /** Method to decrypt char that is entered, uses ascii value to determine 
@@ -32,11 +32,10 @@ public class CaesarCipher extends Cipher{
      */
     @Override
     protected char decryptLetter(char c){
-        if (Character.isWhitespace(c)) {
-            return c;
+        if (Character.isAlphabetic((int) c)){
+            char decryptedChar = (char) (((int) c - this.shift - 65) % 26 + 65);// 65 represents 'A' in ascii
+            return decryptedChar;
         }
-        char decryptedChar = (char) (((int) c - this.shift - 65) % 26 + 65);// 65 represents 'A' in ascii 
-        return decryptedChar;
-    }
-        
+        return c;
+    }  
 }

@@ -44,17 +44,18 @@ public class Cipher {
      */
     protected char encryptLetter(char c){
         if (Character.isAlphabetic((int) c)){
-            return c;
-        }
-        char [] reverseAlpha = new char[26];
-        int location = 0;
-        for (int i = 0; i < this.alphabet.length; ++i){
-            reverseAlpha[i] = this.alphabet[alphabet.length - (i+1)];
-            if (this.alphabet[i] == c){
-                location = i;
+            char[] reverseAlpha = new char[26];
+            int location = 0;
+            for (int i = 0; i < this.alphabet.length; ++i) {
+                reverseAlpha[i] = this.alphabet[alphabet.length - (i + 1)];
+                if (this.alphabet[i] == c) {
+                    location = i;
+                }
             }
+            return reverseAlpha[location];
         }
-        return reverseAlpha[location];
+        return c;
+      
     }
 
     /** Method to decrypt individual char using corresponding 
@@ -63,19 +64,19 @@ public class Cipher {
      * @return char decrypted
      */
     protected char decryptLetter(char c){
-        if (Character.isWhitespace(c) || Character.isDigit(c)) {
-            return c;
-        }
-        char [] reverseAlpha = new char[26];
-        int location = 0;
-        for (int i = 0; i < this.alphabet.length; ++i) {
-            reverseAlpha[i] = this.alphabet[alphabet.length - (i + 1)];
-        }
-        for (int i =0; i < reverseAlpha.length; ++i){
-            if (reverseAlpha[i] == c){
-                location = i;
+        if (Character.isAlphabetic((int) c)){
+            char[] reverseAlpha = new char[26];
+            int location = 0;
+            for (int i = 0; i < this.alphabet.length; ++i) {
+                reverseAlpha[i] = this.alphabet[alphabet.length - (i + 1)];
             }
+            for (int i = 0; i < reverseAlpha.length; ++i) {
+                if (reverseAlpha[i] == c) {
+                    location = i;
+                }
+            }
+            return this.alphabet[location];
         }
-        return this.alphabet[location];
+        return c;
     }
 }
