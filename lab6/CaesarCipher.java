@@ -33,15 +33,8 @@ public class CaesarCipher extends Cipher{
     @Override
     protected char decryptLetter(char c){
         if (Character.isAlphabetic((int) c)){
-            if (c >= 'A' && c <= 'Z'){
-                c = (char) (c - this.shift);
-                if (c < 'A'){
-                    c = (char)(c + 'Z' - 'A' + 1);
-                }
-                return c;
-            }
-
-
+            char encryptedChar = (char) (((int) c - this.shift + 65) % 26 + 65);
+            return encryptedChar;
         }
         return c;
     }  
