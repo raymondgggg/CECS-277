@@ -1,6 +1,9 @@
+/** Cipher class - uses Atbash Cipher to encrypt and decrypt Strings char by char*/
 public class Cipher {
+    /**Array of alphabet used to encrypt and decrypt letters */
     protected char [] alphabet;
     
+    /**Constructor - populates alphabet array with the whole alphabet*/
     public Cipher(){
         alphabet = new char[26];
         for (char c = 'a'; c <= 'z'; ++c){
@@ -8,6 +11,12 @@ public class Cipher {
         }
     }
 
+    
+    /** Method to encrypt String that has been entered using 
+     *  encryptLetter() method for each char in string 
+     * @param msg String that will be encrypted 
+     * @return String that has been encrypted
+     */
     public String encrypt(String msg){
         String encryptedMsg = "";
         for (int i = 0; i < msg.length(); ++i){
@@ -16,6 +25,12 @@ public class Cipher {
         return encryptedMsg;
     }
 
+    
+    /** Method to decrypt String that has been entered using
+     *  decryptLetter() method for each char in string
+     * @param msg String that will be decrypted
+     * @return String that has been decrypted
+     */
     public String decrypt(String msg){
         String decryptedMsg = "";
         for (int i = 0; i < msg.length(); ++i){
@@ -24,6 +39,12 @@ public class Cipher {
         return decryptedMsg;
     }
 
+    
+    /** Method to encrypt individual char using corresponding 
+     *  reverse alpabet array 
+     * @param c char that will be encrypted
+     * @return char encrypted with reverse alphabet
+     */
     protected char encryptLetter(char c){
         char [] reverseAlpha = new char[26];
         int location = 0;
@@ -36,6 +57,12 @@ public class Cipher {
         return reverseAlpha[location];
     }
 
+    
+    /** Method to decrypt individual char using corresponding 
+     *  reverse alphabet array
+     * @param c char that will be decrypted
+     * @return char decrypted
+     */
     protected char decryptLetter(char c){
         char [] reverseAlpha = new char[26];
         int location = 0;
