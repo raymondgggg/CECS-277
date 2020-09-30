@@ -43,8 +43,8 @@ public class Cipher {
      * @return char encrypted with reverse alphabet
      */
     protected char encryptLetter(char c){
-        if (Character.isWhitespace(c)) {
-            return ' ';
+        if (Character.isAlphabetic((int) c)){
+            return c;
         }
         char [] reverseAlpha = new char[26];
         int location = 0;
@@ -63,8 +63,8 @@ public class Cipher {
      * @return char decrypted
      */
     protected char decryptLetter(char c){
-        if (Character.isWhitespace(c)) {
-            return ' ';
+        if (Character.isWhitespace(c) || Character.isDigit(c)) {
+            return c;
         }
         char [] reverseAlpha = new char[26];
         int location = 0;

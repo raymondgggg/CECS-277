@@ -1,6 +1,6 @@
-/** Extension of cipher class for caesar cipher */
+/** Extension of Cipher class for Caesar Cipher */
 public class CaesarCipher extends Cipher{
-    /**Value that the ciper will be shifted */
+    /**Value that the cipher will be shifted */
     private int shift;
 
     /**Constructor - calls super constructor and updates the shift value */
@@ -17,6 +17,9 @@ public class CaesarCipher extends Cipher{
      */
     @Override
     protected char encryptLetter(char c){
+        if (Character.isWhitespace(c)) {
+            return c;
+        }
         char encryptedChar = (char) (((int) c + this.shift - 65) % 26 + 65);
         return encryptedChar;
     }
@@ -29,6 +32,9 @@ public class CaesarCipher extends Cipher{
      */
     @Override
     protected char decryptLetter(char c){
+        if (Character.isWhitespace(c)) {
+            return c;
+        }
         char decryptedChar = (char) (((int) c - this.shift - 65) % 26 + 65);// 65 represents 'A' in ascii 
         return decryptedChar;
     }
