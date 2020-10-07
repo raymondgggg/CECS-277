@@ -38,6 +38,6 @@ public class Player {
      * @return String current HP of the player
      */
     public String toString(){
-        return "You have " + this.hp + "/" + 10 + "HP";
+        return "You have " + this.hp + "/" + 10 + " HP";
     }
 }
