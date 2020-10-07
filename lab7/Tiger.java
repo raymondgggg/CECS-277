@@ -1,9 +1,21 @@
+/** Subclass of Cat, Tiger */
 public class Tiger extends Cat {
-
+    /**
+     * Constructor - for creating type of Cat Tiger
+     * 
+     * @param n the name of Tiger
+     */
     public Tiger(String n){
         super(n);
     }
 
+    
+    /**
+     * Method for handling feeding interaction between Player and Tiger
+     * 
+     * @param p the player that will feed the Tiger
+     * @return String representation of what happens
+     */
     @Override
     public String feed(Player p) {
         String catStatus;
@@ -23,6 +35,13 @@ public class Tiger extends Cat {
         return catStatus;
     }
 
+    
+    /**
+     * Method for handling playing interaction between Player and Tiger
+     * 
+     * @param p the player that will play with Tiger
+     * @return String represetation of what happens
+     */
     @Override
     public String play(Player p) {
         String catStatus;
@@ -44,6 +63,13 @@ public class Tiger extends Cat {
         return catStatus;
     }
 
+    
+    /**
+     * Method for handling the pet interaction between Player and Tiger
+     * 
+     * @param p the player that will pet the Tiger
+     * @return String representation of what happens
+     */
     @Override
     public String pet(Player p) {
         String catStatus;

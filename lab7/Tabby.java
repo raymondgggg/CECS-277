@@ -1,9 +1,16 @@
+/**Subclass of Cat, Tabby */
 public class Tabby extends Cat{
-
+    /**Constructor - for creating type of Cat Tabby
+     * @param n the name of Tabby
+    */
     public Tabby(String n){
         super(n);
     }
 
+    /** Method for handling feeding interaction between Player and Tabby
+     * @param p the player that will feed Tabby
+     * @return String representation of what happened
+     */
     @Override
     public String feed(Player p) {
         String catStatus;
@@ -24,6 +31,10 @@ public class Tabby extends Cat{
         return catStatus; 
     }
 
+    /** Method for handling playing interaction between Player and Tabby
+     * @param p the player that will play with Tabby
+     * @return String representation of what happens
+     */
     @Override
     public String play(Player p) {
         String catStatus;
@@ -45,6 +56,10 @@ public class Tabby extends Cat{
         return catStatus;
     }
 
+    /** Method for handling the pet interaction between Player and Tabby
+     * @param p the player that will pet Tabby
+     * @return String representation of what happens
+     */
     @Override
     public String pet(Player p) {
         String catStatus;
@@ -63,6 +78,5 @@ public class Tabby extends Cat{
         catStatus = toString() + ", and has fallen asleep.";
         incrementHunger(-2);
         return catStatus;
-    }
-    
+    } 
 }

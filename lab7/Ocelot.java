@@ -1,9 +1,19 @@
+/** Subclass of Cat, Ocelot */
 public class Ocelot extends Cat {
 
+    /**
+     * Constructor - for creating type of Cat Tabby
+     * 
+     * @param n the name of Ocelot
+     */
     public Ocelot(String n){
         super(n);
     }
 
+    /** Method for handling feeding interaction between Player and Ocelot
+     * @param p the player that will feed the Ocelot
+     * @return String representation of what happens
+     */
     @Override
     public String feed(Player p) {
         String catStatus;
@@ -23,6 +33,11 @@ public class Ocelot extends Cat {
         return catStatus;
     }
 
+    /**
+     * Method for handling playing interaction between Player and Ocelot
+     * @param p the player that will play with Ocelot
+     * @return String represetation of what happens
+     */
     @Override
     public String play(Player p) {
         String catStatus;
@@ -44,6 +59,11 @@ public class Ocelot extends Cat {
         return catStatus;
     }
 
+    /**
+     * Method for handling the pet interaction between Player and Ocelot
+     * @param p the player that will pet the Ocelot
+     * @return String representation of what happens
+     */
     @Override
     public String pet(Player p) {
         String catStatus;
