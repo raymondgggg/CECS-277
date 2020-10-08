@@ -1,5 +1,5 @@
 /**Abstract class for object of type Cat that will be used to extend other subclasses of Cat */
-public abstract class Cat {
+public abstract class Cat{
     /** The name of the cat */
     private String name;
     /**The hunger level for the cat range (1-10)*/
@@ -7,32 +7,32 @@ public abstract class Cat {
 
     /**Constructor - instantiates Cat object and sets the name to 
      * parameter and hunger level to default level of 5
-     * @param n the name of the cat
+     * @param n the name of the Cat
      */
     public Cat(String n){
         this.name = n;
         this.hunger = 5;
     }
 
-    /** Method for returning the name of the cat 
+    /** Method for returning the name of the Cat 
      *  in question
-     * @return String the name of the cat
+     * @return String the name of the Cat
      */
     public String getName(){
         return this.name;
     }
 
-    /** Method for returning the hunger level of the cat in question
-     * @return int the hunger level over the cat (range 1-10)
+    /** Method for returning the hunger level of the Cat in question
+     * @return int the hunger level over the Cat (range 1-10)
      */
     public int getHunger(){
         return this.hunger;
     }
 
-    /** Method for modifying the hunger value of the cat based off 
+    /** Method for modifying the hunger value of the Cat based off 
      *  value entered.
-     * @param val the vaule that will be added or subtracted to the cat's hunger
-     * @return int the hunger of the cat
+     * @param val the vaule that will be added or subtracted to the Cat's hunger
+     * @return int the hunger of the Cat
      */
     protected int incrementHunger(int val){
         this.hunger += val;
@@ -45,8 +45,8 @@ public abstract class Cat {
         return this.hunger;
     }
 
-    /** Returns String value representation of cats hunger level
-     * @return String the cat's hunger level
+    /** Returns String value representation of Cats hunger level
+     * @return String the Cat's hunger level
      */
     @Override
     public String toString(){
@@ -60,20 +60,20 @@ public abstract class Cat {
     }
 
     /**Method prototype that takes in Player 
-     * and does feeding interaction with cat
-     * @param p the player 
+     * and does feeding interaction with Cat
+     * @param p the Player 
      */
     public abstract String feed(Player p);
 
     /**Method prototype that takes in Player and 
-     * does play interaction with cat
-     * @param p the player
+     * does play interaction with Cat
+     * @param p the Player
      */
     public abstract String play(Player p);
 
     /**Method prototype that takes in Player 
-     * and does petting interaction with cat
-     * @param p the player
+     * and does petting interaction with Cat
+     * @param p the Player
      */
     public abstract String pet(Player p);
 

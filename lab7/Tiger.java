@@ -8,7 +8,6 @@ public class Tiger extends Cat {
     public Tiger(String n){
         super(n);
     }
-
     
     /**
      * Method for handling feeding interaction between Player and Tiger
@@ -35,7 +34,6 @@ public class Tiger extends Cat {
         return catStatus;
     }
 
-    
     /**
      * Method for handling playing interaction between Player and Tiger
      * 
@@ -51,8 +49,7 @@ public class Tiger extends Cat {
             incrementHunger(-4);
             return catStatus;
         } else if (getHunger() >= 5 && getHunger() <= 7) {
-            catStatus = getName() + " jumps and accidently lands on your head, you take " + damage
-                    + " damage";
+            catStatus = getName() + " jumps and accidently lands on your head, you take " + damage + " damage";
             incrementHunger(-4);
             p.takeDamage(damage);
             return catStatus;
@@ -63,7 +60,6 @@ public class Tiger extends Cat {
         return catStatus;
     }
 
-    
     /**
      * Method for handling the pet interaction between Player and Tiger
      * 

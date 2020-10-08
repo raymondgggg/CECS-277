@@ -1,8 +1,12 @@
+// Group 4
+// Andressa Murakami
+// Raymond Guevara Lozano 
+
 /**Main class where all other classes are brought in to make cat game */
 public class Main{
     /** Main method where Player is prompted to choose Cat and give Cat name
      *  instantiates type of Cat based off what Player chooses and does 
-     *  repeated player and cat interactions until player dies.
+     *  repeated Player and Cat interactions until Player dies.
      * @param args no command line arguments given
      */
     public static void main(String[] args) {
@@ -31,10 +35,10 @@ public class Main{
       System.out.println("You have died :(");    
     }
 
-    /** Method that includes all the logic for repeated interactions between the player and 
-     *  the cat
-     * @param c the cat that will be used for the game
-     * @param p the player of the game
+    /** Method that includes all the logic for repeated interactions between the Player and 
+     *  the Cat
+     * @param c the Cat that will be used for the game
+     * @param p the Player of the game
      */
     public static void interactCat(Cat c, Player p){
         System.out.println(p.toString());

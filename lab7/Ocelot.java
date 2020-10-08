@@ -1,8 +1,7 @@
 /** Subclass of Cat, Ocelot */
 public class Ocelot extends Cat {
-
     /**
-     * Constructor - for creating type of Cat Tabby
+     * Constructor - for creating type of Cat Ocelot
      * 
      * @param n the name of Ocelot
      */
@@ -47,8 +46,7 @@ public class Ocelot extends Cat {
             incrementHunger(-3);
             return catStatus;
         } else if (getHunger() >= 5 && getHunger() <= 7) {
-            catStatus = getName() + " jumps and knocks over a shelf that hits you in the head, you take " + damage
-                    + " damage";
+            catStatus = getName() + " jumps and knocks over a shelf that hits you in the head, you take " + damage + " damage";
             incrementHunger(-3);
             p.takeDamage(damage);
             return catStatus;

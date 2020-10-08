@@ -58,6 +58,7 @@ public class CheckInput {
 		}
 		return input;
 	}
+	
 	/**
 	 * Checks if the inputted value is a non-negative integer.
 	 * @return the valid input.
