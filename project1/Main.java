@@ -8,14 +8,19 @@ public class Main {
         //     System.out.println(randHealth);
         // }
 
+        ItemGenerator ig = new ItemGenerator();
+        for (int i = 0; i < 20; i++){
+            System.out.println(ig.generateItem().getName());
+        }
 
-        Map map = new Map();
-        map.loadMap(2);
-        map.displayMap();
 
-        Point start = map.findStart();
-        System.out.println(start.x + " " + start.y);
-        System.out.println(map.getCharAtLoc(start));
+        // Map map = new Map();
+        // map.loadMap(2);
+        // map.displayMap();
+
+        // Point start = map.findStart();
+        // System.out.println(start.x + " " + start.y);
+        // System.out.println(map.getCharAtLoc(start));
         
     }
 }

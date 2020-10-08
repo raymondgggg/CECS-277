@@ -2,48 +2,36 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 /**Class that generates all Items from "ItemList.txt" and appends to ArrayList */
 public class ItemGenerator {
     /**Arraylist of the items gotten from "ItemList.txt" */
     private ArrayList<Item> itemList;
 
-    /**Constructor - Generate all the items from "ItemList.txt" and append 
-     * them to itemList ArrayList 
+    /**Constructor - read the file that contains the list of items and 
+     * appends all the items to the itemList
      */
     public ItemGenerator() {
         this.itemList = new ArrayList<Item>();
-        Item i = generateItem();
-        while(i != null){
-            this.itemList.add(i);
-            i = generateItem();
+        File itemList = new File("ItemList.txt");
+        try {
+            Scanner items = new Scanner(itemList);
+            while (items.hasNextLine()) {
+                String line = items.nextLine();
+                Item item = new Item(line);
+                this.itemList.add(item);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
-    /** Method to generate an individual item from "itemsList.txt file"
-     * @return the item generated that was read from the file or null if there are
-     * no items left
+    /** Method to randomly choose from the list of items and returns a new item
+     * @return the item
      */
     public Item generateItem(){
-        File itemList = new File("ItemList.txt");
-        try{
-            Scanner items = new Scanner(itemList);
-            while (items.hasNextLine()){
-                String line = items.nextLine();
-                Item item = new Item(line);
-                boolean contains = false;
-                for (int i = 0; i < this.itemList.size(); i++){
-                    if (this.itemList.get(i).getName().equals(item.getName())){
-                        contains = true;
-                    }
-                }
-                if (contains){
-                    continue;
-                }
-                return item;
-            }
-        }catch(FileNotFoundException e){
-            e.printStackTrace();
-        }
-        return null;
+        int randIndex = ThreadLocalRandom.current().nextInt(this.itemList.size());
+        Item i = this.itemList.get(randIndex);
+        return i;
     }
 }

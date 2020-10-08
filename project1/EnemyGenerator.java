@@ -6,7 +6,7 @@ public class EnemyGenerator {
 
     public EnemyGenerator(ItemGenerator ig){
         this.ig = new ItemGenerator();
-        ig.
+        
     }
 
     // public Enemy generateEnemy(){
