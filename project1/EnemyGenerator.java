@@ -3,11 +3,16 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
-
+/**class to generate enemies read from files */
 public class EnemyGenerator {
+    /**list of enemies read from the file */
     private ArrayList<Enemy> enemyList;
+    /**items read from item file */
     private ItemGenerator ig;
 
+    /**Constructor - read the file and creat new enemy based off whether 
+     * or not they are magical, add random health bump to enemy.
+     */
     public EnemyGenerator(ItemGenerator ig){
         this.ig = new ItemGenerator();
         this.enemyList = new ArrayList<Enemy>();
@@ -36,6 +41,11 @@ public class EnemyGenerator {
         }     
     }
 
+    
+    /** Method to randomly choose from enemyList and create new enemy based off the randomly chosen enemy
+     *  return the new enemy
+     * @return Enemy randomly chosen from template
+     */
     public Enemy generateEnemy(){
        int randIndex = ThreadLocalRandom.current().nextInt(this.enemyList.size());
        Enemy e = new Enemy(this.enemyList.get(randIndex).getName(), this.enemyList.get(randIndex).getMaxHP(),
