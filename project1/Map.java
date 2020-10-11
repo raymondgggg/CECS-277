@@ -50,12 +50,16 @@ public class Map {
         return this.map[p.x][p.y];
     }
 
-    /**Method to print out 5x5 map */
+    /**Method to print out 5x5 map based on whether or not position is reavealed */
     public void displayMap(){
         for (int i = 0; i < this.map.length; i++){
             for (int j = 0; j < this.map.length; j++){
-                
-                System.out.print(map[i][j] + " ");
+                if (revealed[i][j]){
+                    System.out.print(map[i][j] + " ");
+                }
+                else{
+                    System.out.println("X" + " ");
+                }
             }
             System.out.println();
         }

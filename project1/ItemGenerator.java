@@ -20,7 +20,7 @@ public class ItemGenerator {
                 String line = items.nextLine();
                 Item item = new Item(line);
                 this.itemList.add(item);
-            }
+            } //close scanner?
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -31,7 +31,7 @@ public class ItemGenerator {
      */
     public Item generateItem(){
         int randIndex = ThreadLocalRandom.current().nextInt(this.itemList.size());
-        Item i = this.itemList.get(randIndex);
+        Item i = new Item(this.itemList.get(randIndex).getName());
         return i;
     }
 }
