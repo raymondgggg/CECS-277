@@ -33,7 +33,7 @@ public class Hero extends Entity implements Magical{
     public String itemsToString(){
         String inventory = "Inventory:";
         for (int i = 0; i < getNumItems();i++){
-            inventory += "\n" + (i+1) + this.items.get(i).getName() ;
+            inventory += "\n" + (i+1) + ". " + this.items.get(i).getName() ;
         }
         return inventory;
     }
@@ -52,11 +52,13 @@ public class Hero extends Entity implements Magical{
     public boolean pickUpItems(Item i){
         if (this.items.size() < 5){
             System.out.println("You received a " + i.getName());
+            this.items.add(i);
             return true;
         }
         System.out.println("You found " + i.getName()+ ", take Item (y/n)? ");
         boolean takeItem = CheckInput.getYesNo();
         if (takeItem){
+            this.items.add(i);
             return true;
         }
         return false;
@@ -146,7 +148,7 @@ public class Hero extends Entity implements Magical{
      */
     @Override
     public String magicMissile(Entity e) {
-        int randDamage = ThreadLocalRandom.current().nextInt(6);
+        int randDamage = ThreadLocalRandom.current().nextInt(1,6);
         e.takeDamage(randDamage);
         return getName() + " shoots a heatseaking missle at " + e.getName() + " for " + randDamage + " damage.";
     }
@@ -157,7 +159,7 @@ public class Hero extends Entity implements Magical{
      */
     @Override
     public String fireball(Entity e) {
-        int randDamage = ThreadLocalRandom.current().nextInt(6);
+        int randDamage = ThreadLocalRandom.current().nextInt(1,6);
         e.takeDamage(randDamage);
         return getName() + " emits a scorching fireball at " + e.getName() + " for " + randDamage + " damage.";
     }
@@ -168,7 +170,7 @@ public class Hero extends Entity implements Magical{
      */
     @Override
     public String thunderclap(Entity e) {
-        int randDamage = ThreadLocalRandom.current().nextInt(6);
+        int randDamage = ThreadLocalRandom.current().nextInt(1,6);
         e.takeDamage(randDamage);
         return getName() + " zaps " + e.getName() + " with a thunder clap for " + randDamage + " damage.";
     }
@@ -179,7 +181,7 @@ public class Hero extends Entity implements Magical{
      */
     @Override
     public String attack(Entity e) {
-        int randDamage = ThreadLocalRandom.current().nextInt(6);
+        int randDamage = ThreadLocalRandom.current().nextInt(1,6);
         e.takeDamage(randDamage);
         return getName() + " attacks " + e.getName() + " for " + randDamage + " damage";
     }

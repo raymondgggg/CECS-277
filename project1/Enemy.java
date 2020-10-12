@@ -31,6 +31,6 @@ public class Enemy extends Entity{
     public String attack(Entity e) {
         int randDamage = ThreadLocalRandom.current().nextInt(1,6);
         e.takeDamage(randDamage);
-        return getName() + "attacks " + e.getName() +" for " + randDamage + " damage.";
+        return getName() + " attacks " + e.getName() +" for " + randDamage + " damage.";
     }
 }

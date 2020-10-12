@@ -74,6 +74,6 @@ public abstract class Entity {
      */
     @Override
     public String toString(){
-        return this.name + "\n" + this.hp + "/" + this.maxHp;
+        return this.name + "\n" + "HP: " + this.hp + "/" + this.maxHp;
     }
 }
