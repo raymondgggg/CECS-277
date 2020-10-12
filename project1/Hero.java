@@ -5,9 +5,9 @@ public class Hero extends Entity implements Magical{
     /**Items the hero carries */
     private ArrayList<Item> items;
     /**Map that the hero will explore */
-    Map map;
+    private Map map;
     /**Location of the hero */
-    Point location;
+    private Point location;
 
     /**Constructor - instantiates hero object by calling super constructor, and initializing map
      * and location fields
