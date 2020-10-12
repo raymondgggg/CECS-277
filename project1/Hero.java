@@ -14,6 +14,7 @@ public class Hero extends Entity implements Magical{
      */
     public Hero(String n, Map m){
         super(n, 25);
+        this.items = new ArrayList<Item>();
         this.map = m;
         this.location = this.map.findStart();
     }
@@ -23,7 +24,7 @@ public class Hero extends Entity implements Magical{
      */
     @Override
     public String toString(){
-        return toString() + "\n" + itemsToString();
+        return super.toString() + "\n" + itemsToString();
     }
 
     /** Method to go through itemList and appends all items to string
@@ -50,9 +51,10 @@ public class Hero extends Entity implements Magical{
      */
     public boolean pickUpItems(Item i){
         if (this.items.size() < 5){
+            System.out.println("You received a " + i.getName());
             return true;
         }
-        System.out.println("Take Item (y/n)? ");
+        System.out.println("You found " + i.getName()+ ", take Item (y/n)? ");
         boolean takeItem = CheckInput.getYesNo();
         if (takeItem){
             return true;
@@ -98,7 +100,7 @@ public class Hero extends Entity implements Magical{
             return this.map.getCharAtLoc(this.location);
         }
         this.map.reveal(this.location);
-        this.location.x++;
+        this.location.x--;
         return this.map.getCharAtLoc(this.location);
     }
 
@@ -110,7 +112,7 @@ public class Hero extends Entity implements Magical{
             return this.map.getCharAtLoc(this.location);
         }
         this.map.reveal(this.location);
-        this.location.x--;
+        this.location.x++;
         return this.map.getCharAtLoc(this.location);
     }
 

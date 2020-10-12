@@ -51,14 +51,17 @@ public class Map {
     }
 
     /**Method to print out 5x5 map based on whether or not position is reavealed */
-    public void displayMap(){
+    public void displayMap(Point p){
         for (int i = 0; i < this.map.length; i++){
             for (int j = 0; j < this.map.length; j++){
-                if (revealed[i][j]){
-                    System.out.print(map[i][j] + ' ');
+                if (this.revealed[i][j]){
+                    System.out.print(this.map[i][j] + " ");
+                }
+                else if(i == p.x && j == p.y){
+                    System.out.print('*' + " ");
                 }
                 else{
-                    System.out.println('X' + ' ');
+                    System.out.print('X' + " ");
                 }
             }
             System.out.println();
@@ -90,10 +93,10 @@ public class Map {
         revealed[p.x][p.y] = true;
     }
 
-    /** Method to remove the char at specified location
+    /** Method to remove the char at specified location with char 'n' to show room is empty
      * @param p the location where the char will removed
      */
     public void removeCharAtLoc(Point p){
-        this.map[p.x][p.y] = ' ';
+        this.map[p.x][p.y] = 'n';
     }
 }
