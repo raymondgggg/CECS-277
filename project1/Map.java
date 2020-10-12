@@ -55,10 +55,10 @@ public class Map {
         for (int i = 0; i < this.map.length; i++){
             for (int j = 0; j < this.map.length; j++){
                 if (revealed[i][j]){
-                    System.out.print(map[i][j] + " ");
+                    System.out.print(map[i][j] + ' ');
                 }
                 else{
-                    System.out.println("X" + " ");
+                    System.out.println('X' + ' ');
                 }
             }
             System.out.println();

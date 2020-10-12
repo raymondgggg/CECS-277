@@ -7,8 +7,7 @@ public class Main {
         //     int randHealth = ThreadLocalRandom.current().nextInt(1, 11);
         //     System.out.println(randHealth);
         // }
-        
-       
+
         // for (int i = 0; i < 20; i++){
         //     System.out.println(ig.generateItem().getName());
         // }
