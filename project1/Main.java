@@ -30,12 +30,14 @@ public class Main {
             else if (usrChoice == 4){
                 hero.goWest();
             }
+            else {
+                break;
+            }
+            
             // while(monsterRoom(hero, map, eg, level) && fight(hero, eg.generateEnemy()));
 
-        }while(usrChoice != 5 || hero.getHP() != 0);
-        
-        
-        
+        }while(hero.getHP() != 0);
+        System.out.println("Game Over");
     }
 
     public static boolean monsterRoom(Hero h, Map m, EnemyGenerator eg, int level){

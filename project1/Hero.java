@@ -135,6 +135,7 @@ public class Hero extends Entity implements Magical{
         if(this.location.y == 0){
             return this.map.getCharAtLoc(this.location);
         }
+        this.map.reveal(this.location);
         this.location.y--;
         return this.map.getCharAtLoc(this.location);
     }

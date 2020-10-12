@@ -54,11 +54,12 @@ public class Map {
     public void displayMap(Point p){
         for (int i = 0; i < this.map.length; i++){
             for (int j = 0; j < this.map.length; j++){
-                if (this.revealed[i][j]){
-                    System.out.print(this.map[i][j] + " ");
-                }
-                else if(i == p.x && j == p.y){
+                if (i == p.x && j == p.y){
                     System.out.print('*' + " ");
+                    
+                }
+                else if(this.revealed[i][j]){
+                    System.out.print(this.map[i][j] + " ");
                 }
                 else{
                     System.out.print('X' + " ");
