@@ -14,11 +14,6 @@ public class Map {
     public Map(){
         this.map = new char[5][5];
         this.revealed = new boolean[5][5]; 
-        for (int i = 0; i < this.map.length; i++){
-            for (int j = 0; j < this.map.length; j++){
-                revealed[i][j] = false;
-            }
-        }
     }
 
     /** Loads the map from one of the three Map#.txt files
@@ -34,6 +29,7 @@ public class Map {
                     String line = map.nextLine().replace(" ", "");
                     for (int j = 0; j < this.map.length; j++){
                         this.map[i][j] = line.charAt(j);
+                        this.revealed[i][j] = false;
                     }
                 }
             }

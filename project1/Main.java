@@ -2,21 +2,22 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        int level = 0;
-        int [] levels = {1,2,3};
         System.out.print("What is your name traveler? ");
         String name = CheckInput.getString();
+        int usrChoice = 0;
+        int level = 0;
+        int[] levels = { 1, 2, 3 };
         Map map = new Map();
         map.loadMap(levels[level % levels.length]);
         Hero hero = new Hero(name, map);
         ItemGenerator ig = new ItemGenerator();
         EnemyGenerator eg = new EnemyGenerator(ig);
-        int usrChoice = 0;
 
         do{
             System.out.println(hero.toString());
             map.displayMap(hero.getLocation());
             System.out.println("1. Go North\n2. Go South\n3. Go East\n4. Go West\n5. Quit");
+
             usrChoice = CheckInput.getIntRange(1, 5);
             if (usrChoice == 1){
                 hero.goNorth();
@@ -30,13 +31,13 @@ public class Main {
             else if (usrChoice == 4){
                 hero.goWest();
             }
-            else {
-                break;
+            if (map.getCharAtLoc(hero.getLocation()) == 'f') {
+                System.out.println("Next level:");
+                level++;
+                map.loadMap(levels[level % levels.length]);
             }
             
-            // while(monsterRoom(hero, map, eg, level) && fight(hero, eg.generateEnemy()));
-
-        }while(hero.getHP() != 0);
+        }while(usrChoice !=5 && hero.getHP() != 0);
         System.out.println("Game Over");
     }
 

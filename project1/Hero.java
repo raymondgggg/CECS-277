@@ -31,9 +31,9 @@ public class Hero extends Entity implements Magical{
      * @return String represetnation of Item objects
      */
     public String itemsToString(){
-        String inventory = "Inventory:\n";
+        String inventory = "Inventory:";
         for (int i = 0; i < getNumItems();i++){
-            inventory += (i+1) + this.items.get(i).getName() + "\n";
+            inventory += "\n" + (i+1) + this.items.get(i).getName() ;
         }
         return inventory;
     }
