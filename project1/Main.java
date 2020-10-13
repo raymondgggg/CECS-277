@@ -43,6 +43,9 @@ public class Main {
                 if (e.getHP() == 0) {
                     map.removeCharAtLoc(hero.getLocation());
                 }
+                if (hero.getHP() == 0){
+                    break;
+                }
             }
         
             if (map.getCharAtLoc(hero.getLocation()) == 'f') {
@@ -53,7 +56,11 @@ public class Main {
             }
             
         }while(hero.getHP() != 0);
-        System.out.println("Game Over");
+        if (hero.getHP() <= 0){
+            System.out.println("Game Over. You died");
+        }
+        System.out.println("Game Over.");
+        
     }
 
     public static boolean monsterRoom(Hero h, Map m, EnemyGenerator eg, int level){
@@ -72,28 +79,39 @@ public class Main {
             int attack = CheckInput.getIntRange(1, 2);
             if (attack == 1){
                 System.out.println(h.attack(e));
-                System.out.println(e.attack(h));
+                if (e.getHP() > 0){
+                    System.out.println(e.attack(h));
+                }
             }
             else if (attack == 2){
                 System.out.println("1.Magic Missle\n2.Fireball\n3.Thunderclap");
                 int magicAttack = CheckInput.getIntRange(1, 3);
                 if(magicAttack == 1){
                     System.out.println(h.magicMissile(e));
-                    System.out.println(e.attack(h));
+                    if (e.getHP() > 0){
+                        System.out.println(e.attack(h));
+                    }
                 }
                 else if (magicAttack == 2){
                     System.out.println(h.fireball(e));
-                    System.out.println(e.attack(h));
+                    if (e.getHP() > 0){
+                        System.out.println(e.attack(h));
+                    }
                 }
                 else {
                     System.out.println(h.thunderclap(e));
-                    System.out.println(e.attack(h));
+                    if (e.getHP() > 0){
+                        System.out.println(e.attack(h));
+                    }
                 }
             }
             if (e.getHP() <= 0) {
                 System.out.println("You defeated " + e.getName());
                 h.pickUpItems(e.getItem());
 
+                return false;
+            }
+            if (h.getHP() <= 0){
                 return false;
             }
             return true;

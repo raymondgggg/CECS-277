@@ -58,6 +58,10 @@ public class Hero extends Entity implements Magical{
         System.out.println("You found " + i.getName()+ ", take Item (y/n)? ");
         boolean takeItem = CheckInput.getYesNo();
         if (takeItem){
+            System.out.println(itemsToString());
+            System.out.println("Choose item to remove: ");
+            int item = CheckInput.getIntRange(1, 5);
+            this.items.remove(item - 1);
             this.items.add(i);
             return true;
         }
