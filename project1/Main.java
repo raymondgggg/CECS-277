@@ -125,7 +125,7 @@ public class Main {
                 }
             }
             else if (attack == 2){
-                System.out.println("1.Magic Missle\n2.Fireball\n3.Thunderclap");
+                System.out.println(Magical.MAGIC_MENU);
                 int magicAttack = CheckInput.getIntRange(1, 3);
                 if(magicAttack == 1){
                     System.out.println(h.magicMissile(e));
