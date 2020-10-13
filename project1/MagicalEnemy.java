@@ -37,7 +37,7 @@ public class MagicalEnemy extends Enemy implements Magical{
      */
     @Override
     public String magicMissile(Entity e) {
-        int randDamage = ThreadLocalRandom.current().nextInt(1,8);
+        int randDamage = ThreadLocalRandom.current().nextInt(1,6);
         e.takeDamage(randDamage);
         return getName() + " shoots a blazing magic missle at " + e.getName() + " for " + randDamage + " damage";
     }
@@ -49,7 +49,7 @@ public class MagicalEnemy extends Enemy implements Magical{
      */
     @Override
     public String fireball(Entity e) {
-        int randDamage = ThreadLocalRandom.current().nextInt(1,8);
+        int randDamage = ThreadLocalRandom.current().nextInt(1,6);
         e.takeDamage(randDamage);
         return getName() + " shoots a heat seaking fireball at " + e.getName() + " for " + randDamage + " damage";
     }
@@ -61,7 +61,7 @@ public class MagicalEnemy extends Enemy implements Magical{
      */
     @Override
     public String thunderclap(Entity e) {
-        int randDamage = ThreadLocalRandom.current().nextInt(1,8);
+        int randDamage = ThreadLocalRandom.current().nextInt(1,6);
         e.takeDamage(randDamage);
         return getName() + " strikes with a thunder clap taking away " + randDamage + " health from " + e.getName();
     }

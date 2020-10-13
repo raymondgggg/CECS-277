@@ -1,18 +1,28 @@
+//Raymond Guevara Lozano 
+//
 import java.util.concurrent.ThreadLocalRandom;
-
+//**Main class where all components are glued together to make game */
 public class Main {
+    /** Main method where all previously made methods and classes are brought together to
+     *  make the game run
+     * @param args no command line arguments for this program
+     */
     public static void main(String[] args) {
         System.out.print("What is your name traveler? ");
         String name = CheckInput.getString();
-        int usrChoice = 0;
-        int level = 0;
-        int[] levels = { 1, 2, 3 };
+        int usrChoice = 0;//directional choice for the game
+        int level = 0; //level++ to move on to next level
+        int[] levels = { 1, 2, 3 }; //store level number in array
+
+        //load in necessary components needed for the game
         Map map = new Map();
         map.loadMap(levels[level % levels.length]); // use modulus operator to get num from [0-2] for index of levels array
         Hero hero = new Hero(name, map);
         ItemGenerator ig = new ItemGenerator();
         EnemyGenerator eg = new EnemyGenerator(ig);
 
+        //loop where the game takes place, prints out hero info and looks through map for 'm', 'i', or 'n'
+        //to use appropriate methods for rooms
         do{
             System.out.println(hero.toString());
             map.displayMap(hero.getLocation());
@@ -34,8 +44,12 @@ public class Main {
             else if (usrChoice == 5){
                 break;
             }
-
-            if (monsterRoom(hero, map, eg, levels[level % levels.length])){
+            //Item room
+            if (map.getCharAtLoc(hero.getLocation()) == 'i'){
+                itemRoom(hero, map, ig);
+            }
+            //Monster room
+            else if (monsterRoom(hero, map, eg, levels[level % levels.length])){
                 Enemy e = eg.generateEnemy();
                 System.out.println("You've encountered a " + e.getName());
 
@@ -44,15 +58,19 @@ public class Main {
                     map.removeCharAtLoc(hero.getLocation());
                 }
             }
-        
-            if (map.getCharAtLoc(hero.getLocation()) == 'f') {
+            //Empty room
+            else if(map.getCharAtLoc(hero.getLocation()) == 'n'){
+                System.out.println("There was nothing here.");
+            }
+            //Final spot of map, move onto next map
+            else if (map.getCharAtLoc(hero.getLocation()) == 'f') {
                 System.out.println("Next level:\n");
                 level++;
                 map.loadMap(levels[level % levels.length]);
-                hero.heal(25);
+                hero.heal(hero.getMaxHP());
             }
-            
         }while(hero.getHP() != 0);
+        //display messages for when game is over
         if (hero.getHP() <= 0){
             System.out.println("Game Over. You died");
         }
@@ -61,6 +79,14 @@ public class Main {
         }
     }
 
+    /** Method to detect if room hero is currently in is a monster room, returns boolean 
+     *  value true if room is monster room, false otherwise.
+     * @param h the hero of the game
+     * @param m the map the hero is currently in 
+     * @param eg object to generate enemies
+     * @param level current level 
+     * @return boolean value if room is monster room
+     */
     public static boolean monsterRoom(Hero h, Map m, EnemyGenerator eg, int level){
         if (m.getCharAtLoc(h.getLocation()) == 'm'){
             return true;
@@ -68,6 +94,12 @@ public class Main {
         return false;
     }
 
+    /** Method to handle all the logic associated with the hero and monster fighting. Returns 
+     *  true if hero chooses to fight, false if hero dies or if hero runs away. 
+     * @param h the hero
+     * @param e the enemy the hero is fighting
+     * @return boolean value if fight is happening
+     */
     public static boolean fight(Hero h, Enemy e){
         if (e instanceof Magical){
             e = (MagicalEnemy) e;
@@ -120,7 +152,7 @@ public class Main {
                 return false;
             }
             if (h.getHP() <= 0){
-                return false;//hero dead no fight() = false
+                return false;//hero dead, fight() = false
             }
             return true;
         }
@@ -165,7 +197,17 @@ public class Main {
         }
     }
 
+    /** Method to handle the logic asssociated with going into an item room,
+     *  Hero picks up item if inventory has space otherwise is prompted if they want to pick up item
+     *  and drop item in inventory of their choice to get new item
+     * @param h the hero
+     * @param m the map
+     * @param ig ItemGenerator to get random item for room
+     */
     public static void itemRoom(Hero h, Map m, ItemGenerator ig){
-
+        boolean itemTaken = h.pickUpItems(ig.generateItem());
+        if (itemTaken){
+            m.removeCharAtLoc(h.getLocation());
+        }
     }
 }
