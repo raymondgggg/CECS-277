@@ -1,6 +1,6 @@
-//Raymond Guevara Lozano 
-//
-//Raymond Guevara Lozano
+// Group 2
+// Juan Anaya
+// Raymond Guevara Lozano 
 import java.util.concurrent.ThreadLocalRandom;
 //**Main class where all components are glued together to make game */
 public class Main {
