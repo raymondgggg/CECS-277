@@ -15,7 +15,7 @@ public class EnemyGenerator {
      */
     public EnemyGenerator(ItemGenerator ig){
         this.ig = new ItemGenerator();
-        this.enemyList = new ArrayList<Enemy>();
+        this.enemyList = new ArrayList<>();
         File enemyList = new File("EnemyList.txt");
         try{
             Scanner enemy = new Scanner(enemyList);
@@ -27,7 +27,7 @@ public class EnemyGenerator {
                 int health = Integer.parseInt(values[1]) + randHealthBump;
                 String type = values[2];
                 if (type.equals("m")){
-                    MagicalEnemy me = new MagicalEnemy(name, health, ig.generateItem());
+                    Enemy me = new MagicalEnemy(name, health, ig.generateItem());
                     this.enemyList.add(me);
                 }
                 else{
@@ -48,6 +48,11 @@ public class EnemyGenerator {
      */
     public Enemy generateEnemy(){
        int randIndex = ThreadLocalRandom.current().nextInt(this.enemyList.size());
+       if (this.enemyList.get(randIndex) instanceof MagicalEnemy){
+           Enemy e = new MagicalEnemy(this.enemyList.get(randIndex).getName(), this.enemyList.get(randIndex).getMaxHP(),
+                   this.enemyList.get(randIndex).getItem());
+            return e;
+       }
        Enemy e = new Enemy(this.enemyList.get(randIndex).getName(), this.enemyList.get(randIndex).getMaxHP(),
                this.enemyList.get(randIndex).getItem());
         return e;

@@ -14,6 +14,7 @@ public class MagicalEnemy extends Enemy implements Magical{
      * @param e the Entity to be attacked
      * @return String representation of what happens
      */
+    @Override
     public String attack(Entity e){
         int randAttack = ThreadLocalRandom.current().nextInt(1,4); //randomly determine the three types of possible attacks
         String attack;

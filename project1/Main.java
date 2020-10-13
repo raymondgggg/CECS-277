@@ -69,6 +69,9 @@ public class Main {
     }
 
     public static boolean fight(Hero h, Enemy e){
+        if (e instanceof Magical){
+            e = (MagicalEnemy) e;
+        }
         System.out.println(e.toString());
         int usrinput = 0;
         if (h.hasPotion()){
@@ -117,7 +120,7 @@ public class Main {
                 return false;
             }
             if (h.getHP() <= 0){
-                return false;
+                return false;//hero dead no fight() = false
             }
             return true;
         }
