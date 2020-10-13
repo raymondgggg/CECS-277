@@ -70,7 +70,12 @@ public class Hero extends Entity implements Magical{
 
     /**Method to heal the hero */
     public void drinkPotion(){
-        heal(25);
+        heal(this.getMaxHP());
+        for (int i = 0; i < this.items.size();i++){
+            if (this.items.get(i).getName().equals("Health Potion")) {
+                this.items.remove(i);
+            }
+        }
     }
 
     /** Method for hero to drop item from inventory 
@@ -85,8 +90,9 @@ public class Hero extends Entity implements Magical{
      */
     public boolean hasPotion(){
         for (int i = 0; i < this.items.size(); i++) {
-            if (this.items.get(i).getName().equals("Health Potion"));
-            return true;
+            if (this.items.get(i).getName().equals("Health Potion")){
+                return true;
+            }
         }
         return false; 
     }

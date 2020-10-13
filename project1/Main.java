@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
@@ -9,7 +8,7 @@ public class Main {
         int level = 0;
         int[] levels = { 1, 2, 3 };
         Map map = new Map();
-        map.loadMap(levels[level % levels.length]);
+        map.loadMap(levels[level % levels.length]); // use modulus operator to get num from [0-2] for index of levels array
         Hero hero = new Hero(name, map);
         ItemGenerator ig = new ItemGenerator();
         EnemyGenerator eg = new EnemyGenerator(ig);
@@ -39,17 +38,15 @@ public class Main {
             if (monsterRoom(hero, map, eg, levels[level % levels.length])){
                 Enemy e = eg.generateEnemy();
                 System.out.println("You've encountered a " + e.getName());
+
                 while(fight(hero, e));
                 if (e.getHP() == 0) {
                     map.removeCharAtLoc(hero.getLocation());
                 }
-                if (hero.getHP() == 0){
-                    break;
-                }
             }
         
             if (map.getCharAtLoc(hero.getLocation()) == 'f') {
-                System.out.println("Next level:");
+                System.out.println("Next level:\n");
                 level++;
                 map.loadMap(levels[level % levels.length]);
                 hero.heal(25);
@@ -59,8 +56,9 @@ public class Main {
         if (hero.getHP() <= 0){
             System.out.println("Game Over. You died");
         }
-        System.out.println("Game Over.");
-        
+        else{
+            System.out.println("Game Over.");
+        }
     }
 
     public static boolean monsterRoom(Hero h, Map m, EnemyGenerator eg, int level){
@@ -72,8 +70,15 @@ public class Main {
 
     public static boolean fight(Hero h, Enemy e){
         System.out.println(e.toString());
-        System.out.println("1. Fight\n2. Run Away");
-        int usrinput = CheckInput.getIntRange(1, 2);
+        int usrinput = 0;
+        if (h.hasPotion()){
+            System.out.println("1. Fight\n2. Run Away\n3. Drink Health Potion");
+            usrinput = CheckInput.getIntRange(1, 3);
+        }else{
+            System.out.println("1. Fight\n2. Run Away");
+            usrinput = CheckInput.getIntRange(1, 2);
+        }
+
         if(usrinput == 1){
             System.out.println("1.Physical Attack\n2.Magical Attack");
             int attack = CheckInput.getIntRange(1, 2);
@@ -116,7 +121,7 @@ public class Main {
             }
             return true;
         }
-        else{ //move hero to valid adjacent room randomly
+        else if (usrinput == 2){ //move hero to valid adjacent room randomly
             if(h.getLocation().x == 0 || h.getLocation().x == 4){
                 int runLocation = ThreadLocalRandom.current().nextInt(1,3);
                 if (runLocation == 1){
@@ -150,6 +155,10 @@ public class Main {
                 }
             }
             return false;
+        }
+        else{
+            h.drinkPotion();
+            return true;
         }
     }
 
