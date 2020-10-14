@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Welcome to the Escape Room.\nYou must unlock 3 doors to escape...\n");
         for (int i = 0; i < 3; i++){
-            int randDoor = ThreadLocalRandom.current().nextInt(3);
+            int randDoor = ThreadLocalRandom.current().nextInt(1,4);
             Door door;
             if (randDoor == 1) {
                 door = new BasicDoor();
