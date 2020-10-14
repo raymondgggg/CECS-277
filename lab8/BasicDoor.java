@@ -1,14 +1,12 @@
 import java.util.concurrent.ThreadLocalRandom;
-/** BasicDoor class to that will be used in game, implements door interface */
+/** BasicDoor class that will be used in game, implements door interface */
 public class BasicDoor implements Door{
-    /**Boolean value to see if door has been pushed */
+    /**Boolean value to see if door needs to be pushed*/
     private boolean push;
-    /**Boolean value to see if input is true (e.g. input is push) */
+    /**Boolean value to see if input is true and opens door*/
     private boolean input;
 
-    /**
-     * Constructor - initilizes push and input to false since the door has 
-     * not been pushed and the input has yet to be gotten
+    /**Constructor - randomly sets push value for door, and then sets input to false
      */
     public BasicDoor(){
         int pushValue = ThreadLocalRandom.current().nextInt(1,3);

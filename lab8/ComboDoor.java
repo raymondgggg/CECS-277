@@ -15,7 +15,6 @@ public class ComboDoor implements Door{
         this.guess = 0;
     }
 
-    
     /** Method that tells the user the type of door they are dealing with
      *  and how to get past it
      * @return String representation of door
@@ -25,7 +24,6 @@ public class ComboDoor implements Door{
         return "You encounter a door with a combination lock.\nYou can spin the dial to a number 1-10.";
     }
 
-    
     /** Give user options for what to do with the door
      * @return String prompt of options for the user
      */
@@ -34,7 +32,6 @@ public class ComboDoor implements Door{
         return "Enter a number (1-10): ";
     }
 
-    
     /** Method to handle the logic associated with unlocking the door
      * @param option the option the user put in
      * @return String representation of what the user is doing
@@ -48,7 +45,6 @@ public class ComboDoor implements Door{
         return null;
     }
 
-    
     /** Method to test and see if the door is open by comparing guess value and combo value
      * @return boolean t if both values are the same, f otherwise
      */
@@ -60,7 +56,6 @@ public class ComboDoor implements Door{
         return false;
     }
 
-    
     /** Method to give the user a clue as to whether or not thier guess is in line with the actual 
      *  combo value
      * @return String representation of clue
@@ -73,7 +68,6 @@ public class ComboDoor implements Door{
         return "You feel the resistance as you turn the dial, it must be higher.";
     }
 
-    
     /** Method to tell the user the door has opened 
      * @return String representation of what happens
      */

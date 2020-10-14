@@ -28,7 +28,6 @@ public class Main {
         System.out.println("Congratualations! You escaped... this time.");
     }
 
-    
     /** Passses in the door the user will try to unlock, calls examine, menu, 
      *  then gets user's input, then calls unlock and then attempts to open door,
      *  if the door is opened success method is called, otherwise clue is called then we repeat

@@ -6,7 +6,8 @@ public class LockedDoor implements Door {
     /**Location that the user searches for key */
     private int keyChoice;
 
-    /** Constructor - randomly initializes the location of the key
+    /** Constructor - randomly initializes the location of the key,
+     *  sets choice to 0 for initilization
      */
     public LockedDoor(){
         this.keyLocation = ThreadLocalRandom.current().nextInt(1,4);
@@ -14,7 +15,7 @@ public class LockedDoor implements Door {
     }
 
     
-    /** Method to simulate the user examining the door
+    /** Method to simulate the user examining the door, tells user what they can do
      * @return String representation of user examining door
      */
     @Override
