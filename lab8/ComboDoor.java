@@ -43,7 +43,7 @@ public class ComboDoor implements Door{
     public String unlock(int option) {
         if (option >= 1 && option <= 10){
             this.guess = option;
-            return "You turn the dial";
+            return "You turn the dial...";
         }
         return null;
     }
