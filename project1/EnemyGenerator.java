@@ -14,7 +14,7 @@ public class EnemyGenerator {
      * or not they are magical, add random health bump to enemy.
      */
     public EnemyGenerator(ItemGenerator ig){
-        this.ig = new ItemGenerator();
+        this.ig = ig;
         this.enemyList = new ArrayList<>();
         File enemyList = new File("EnemyList.txt");
         try{

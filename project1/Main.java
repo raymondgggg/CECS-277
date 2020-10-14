@@ -102,7 +102,7 @@ public class Main {
      * @return boolean value if fight is happening
      */
     public static boolean fight(Hero h, Enemy e){
-        if (e instanceof Magical){
+        if (e instanceof Magical){ //check if the Enemy e is a MagicalEnemy, if so downcast 
             e = (MagicalEnemy) e;
         }
         System.out.println(e.toString());
