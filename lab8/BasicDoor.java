@@ -26,7 +26,7 @@ public class BasicDoor implements Door{
      */
     @Override
     public String examine() {
-        return "You've encountered a basic door.";
+        return "You've encountered a basic door. You can either push or pull to open";
     }
     
     /** Menu options for what the user can do

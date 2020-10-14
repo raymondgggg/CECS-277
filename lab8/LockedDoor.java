@@ -19,7 +19,7 @@ public class LockedDoor implements Door {
      */
     @Override
     public String examine() {
-        return "You have encountered a locked door";
+        return "You have encountered a locked door, you must find the key to open the door";
     }
 
     
