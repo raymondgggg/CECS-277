@@ -69,8 +69,10 @@ public class BasicDoor implements Door{
     @Override
     public boolean open() {
         if (this.input == true){
+            System.out.println(success());
             return true;
         }
+        System.out.println("You move the door but it won't go through");
         return false;
     }
 

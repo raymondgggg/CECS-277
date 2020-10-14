@@ -59,8 +59,10 @@ public class LockedDoor implements Door {
     @Override
     public boolean open() {
         if (this.keyChoice == this.keyLocation){
+            System.out.println(success());
             return true;
         }
+        System.out.println("You jiggle the door but it is still locked");
         return false;
     }
 
