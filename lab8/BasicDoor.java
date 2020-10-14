@@ -1,5 +1,4 @@
 import java.util.concurrent.ThreadLocalRandom;
-
 /** BasicDoor class to that will be used in game, implements door interface */
 public class BasicDoor implements Door{
     /**Boolean value to see if door has been pushed */
@@ -52,13 +51,13 @@ public class BasicDoor implements Door{
                 return "You have pushed the door";
             }
             else if (option == 1 && this.push == false){
-                return "You have pushed the door";
+                return "You have pushed the door\nBut the door did not open";
             }
             else if (option == 2 && this.push == false){
                 this.input = true;
                 return "You have pulled the door";
             }
-            return "You have pulled the door.";
+            return "You have pulled the door\nBut the door did not open";
         }
         return null;// value retured if the option entered is out of range.
     }
@@ -69,10 +68,8 @@ public class BasicDoor implements Door{
     @Override
     public boolean open() {
         if (this.input == true){
-            System.out.println(success());
             return true;
         }
-        System.out.println("You move the door but it won't go through");
         return false;
     }
 
@@ -89,6 +86,6 @@ public class BasicDoor implements Door{
      */
     @Override
     public String success() {
-        return "Congrats, you got through the door.";
+        return "And the door has opened.";
     }
 }

@@ -1,3 +1,4 @@
+/**Door interface where various other classes will implement the methods */
 public interface Door {
 
     /**Method to show what type of door we are dealing with

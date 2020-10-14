@@ -10,6 +10,7 @@ public class LockedDoor implements Door {
      */
     public LockedDoor(){
         this.keyLocation = ThreadLocalRandom.current().nextInt(1,4);
+        this.keyChoice = 0; //starting choice before user inputs
     }
 
     
@@ -59,10 +60,8 @@ public class LockedDoor implements Door {
     @Override
     public boolean open() {
         if (this.keyChoice == this.keyLocation){
-            System.out.println(success());
             return true;
         }
-        System.out.println("You jiggle the door but it is still locked");
         return false;
     }
 
@@ -72,7 +71,7 @@ public class LockedDoor implements Door {
      */
     @Override
     public String clue() {
-        return "Try looking somewhere else";
+        return "The key was not there. Try looking somewhere else";
     }
 
     
@@ -81,7 +80,7 @@ public class LockedDoor implements Door {
      */
     @Override
     public String success() {
-        return "You have unlocked the door!";
+        return "You find the key and have unlocked the door!";
     }
     
 }
