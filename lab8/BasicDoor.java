@@ -39,7 +39,8 @@ public class BasicDoor implements Door{
     }
 
     /** Takes in user choice for menu option, check to see if it is between 1-2 (inclusive) 
-     *  then returns the action the user takes.
+     *  then updates the instance variable input if the user picked the right option
+     *  returns the action the user takes.
      * @param option the user chose
      * @return String representation of user action (null if option is not in range)
      */
