@@ -13,7 +13,7 @@ public class Main {
         String name = CheckInput.getString();
         int usrChoice = 0;//directional choice for the game
         int level = 0; //level++ to move on to next level
-        int[] levels = { 1, 2, 3 }; //store level number in array
+        int[] levels = { 1, 2, 3 }; //store level numbers in array
 
         //load in necessary components needed for the game
         Map map = new Map();
@@ -45,8 +45,12 @@ public class Main {
             else if (usrChoice == 5){
                 break;
             }
+            //returning to the start
+            if (map.getCharAtLoc(hero.getLocation()) == 's'){
+                System.out.println("You are back at the start.");
+            }
             //Item room
-            if (map.getCharAtLoc(hero.getLocation()) == 'i'){
+            else if (map.getCharAtLoc(hero.getLocation()) == 'i'){
                 itemRoom(hero, map, ig);
             }
             //Monster room
@@ -102,7 +106,7 @@ public class Main {
      * @return boolean value if fight is happening
      */
     public static boolean fight(Hero h, Enemy e){
-        if (e instanceof Magical){ //check if the Enemy e is a MagicalEnemy, if so downcast 
+        if (e instanceof Magical){ //check if the Enemy e is a MagicalEnemy, if so downcast to use methods for MagicalEnemy
             e = (MagicalEnemy) e;
         }
         System.out.println(e.toString());
