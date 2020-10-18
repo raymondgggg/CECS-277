@@ -162,21 +162,37 @@ public class Main {
             return true;
         }
         else if (usrinput == 2){ //move hero to valid adjacent room randomly
-            if(h.getLocation().x == 0 || h.getLocation().x == 4){
+            if(h.getLocation().x == 0 && h.getLocation().y == 0){
                 int runLocation = ThreadLocalRandom.current().nextInt(1,3);
                 if (runLocation == 1){
-                    h.goEast();
+                    h.goSouth();
                 }
                 else{
-                    h.goWest();
+                    h.goEast();
                 }
             }
-            else if(h.getLocation().y == 4 || h.getLocation().y == 0){
+            else if(h.getLocation().x == 0 || h.getLocation().y == 4){
                 int runLocation = ThreadLocalRandom.current().nextInt(1,3);
+                if (runLocation == 1) {
+                    h.goWest();
+                } else {
+                    h.goSouth();
+                }
+            }
+            else if (h.getLocation().x == 4 && h.getLocation().y == 0){
+                int runLocation = ThreadLocalRandom.current().nextInt(1, 3);
                 if (runLocation == 1) {
                     h.goNorth();
                 } else {
-                    h.goSouth();
+                    h.goEast();
+                }
+            }
+            else if (h.getLocation().x == 4 && h.getLocation().y == 4) {
+                int runLocation = ThreadLocalRandom.current().nextInt(1, 3);
+                if (runLocation == 1) {
+                    h.goNorth();
+                } else {
+                    h.goWest();
                 }
             }
             else{
