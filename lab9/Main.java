@@ -1,6 +1,6 @@
-
-
-
+// Kevin Garcia Julca
+// Prince Angulo
+// Raymond Guevara Lozano
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -10,8 +10,8 @@ import java.util.Scanner;
 /**Main class where linked list is made from read file */
 public class Main {
     
-    /** 
-     * 
+    /** Main method where the user is prompted to choose what they want 
+     *  to do with the linked list, repeats until user chooses to leave
      * @param args no command line arguments
      */
     public static void main(String[] args) {
@@ -34,15 +34,14 @@ public class Main {
         } while (input != 5);
     }
 
-    
     /** Method to read in the file "words.txt" and create linkedlist sorted
      * @return LinkedList<String> sorted linked list
      */
     public static LinkedList<String> readFile(){
         File inputFile = new File("words.txt");
-        LinkedList<String> lList = new LinkedList<String>();
-        ListIterator<String> iter;
         try{
+            LinkedList<String> lList = new LinkedList<String>();
+            ListIterator<String> iter;
             Scanner input = new Scanner(inputFile);
             lList.add(input.nextLine());
             iter = (ListIterator<String>) lList.iterator();
@@ -58,7 +57,6 @@ public class Main {
         return null;
     }
 
-    
     /** Method to move the iterator based on the position of the word
      * @param iter iterator
      * @param word word to be compared
@@ -72,7 +70,6 @@ public class Main {
         if (iter.hasNext()) {
             iter.next();
         }
-        
     }
     
     /** Method for the user to add in word to linked list
@@ -100,7 +97,6 @@ public class Main {
             }
         }
         System.out.println("sorry word not in list");
-
     }
 
     /** Method to print the list in sorted order
