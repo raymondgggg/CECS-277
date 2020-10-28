@@ -8,6 +8,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         LinkedList<String> lList = readFile();
+        printForward(lList);
+        
     }
 
     public static LinkedList<String> readFile(){
@@ -29,27 +31,50 @@ public class Main {
     }
 
     public static void moveIter(ListIterator<String> iter, String word){
-        boolean foundSpot = false;
-        while (iter.hasNext() && foundSpot == false){
-            if (iter.hasNext() && iter.next().compareTo(word) < 0);
-            else{
-                iter.previous();
-            }
-            if (iter.hasPrevious() && iter.previous().compareTo(word) > 0);
-            else{
-                iter.next();
-            }
-            if (iter.next().compareTo(word) > 0){
-                iter.previous();
-                if(iter.previous().compareTo(word) < 0){
-                    iter.next();
+        boolean foundspot = false;
+        while(foundspot == false){
+            if(iter.hasNext() && (iter.hasPrevious() == false)){
+                if(iter.next().compareTo(word) < 0){
                     iter.add(word);
-                    foundSpot = true;
-                }else{
+                    foundspot = true;
+                }
+                else{
+                    iter.previous();
+                    iter.add(word);
+                    foundspot = true;
+                }
+            }
+            else if(iter.hasNext() && iter.hasPrevious()){
+                if (iter.hasNext() && iter.next().compareTo(word) < 0);
+                else {
+                    iter.previous();
+                }
+                if (iter.hasPrevious() && iter.previous().compareTo(word) > 0);
+                else {
                     iter.next();
                 }
-            }else{
-                iter.previous();
+                if (iter.next().compareTo(word) > 0) {
+                    iter.previous();
+                    if (iter.previous().compareTo(word) < 0) {
+                        iter.next();
+                        iter.add(word);
+                        foundspot = true;
+                    } else {
+                        iter.next();
+                    }
+                } else {
+                    iter.previous();
+                }
+            }
+            else if (iter.hasPrevious() == true && iter.hasNext() == false){
+                if (iter.previous().compareTo(word) > 0){
+                    iter.add(word);
+                    foundspot = true;
+                }else{
+                    iter.next();
+                    iter.add(word);
+                    foundspot = true;
+                }
             }
         }
     }
