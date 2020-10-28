@@ -7,23 +7,37 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        
+        readFile();
     }
 
-    public static List<String> readFile(){
+    public static LinkedList<String> readFile(){
         File inputFile = new File("words.txt");
-        List<String> lList = new LinkedList<>();
+        LinkedList<String> lList = new LinkedList<String>();
+        ListIterator<String> iter;
         try{
             Scanner input = new Scanner(inputFile);
-            
-
+            lList.add(input.nextLine());
+            iter = (ListIterator<String>) lList.iterator();
+            while (input.hasNextLine()){
+                
+            }
+            return lList;
         } catch (FileNotFoundException e){
             e.printStackTrace();
         }
+        return null;
     }
 
-    public static void moveIter(ListIterator<String> iter){
-
+    public static void moveIter(ListIterator<String> iter, String word){
+        boolean foundSpot = false;
+        while (foundSpot == false){
+            if(iter.next().compareTo(word) < 0);
+            else{
+                iter.previous();
+            }
+            if(iter.n)
+            
+        }
     }
 
     public static void addWord(List<String> lList){
