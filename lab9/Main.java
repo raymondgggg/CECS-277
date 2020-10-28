@@ -9,7 +9,6 @@ import java.util.ListIterator;
 import java.util.Scanner;
 /**Main class where linked list is made from read file */
 public class Main {
-    
     /** Main method where the user is prompted to choose what they want 
      *  to do with the linked list, repeats until user chooses to leave
      * @param args no command line arguments
@@ -21,15 +20,20 @@ public class Main {
             input = menu();
             if (input == 1){
                 printForward(lList);
+                System.out.println();
             }
             else if(input == 2){
                 printReversed(lList);
+                System.out.println();
             }
             else if (input == 3){
                 addWord(lList);
+                System.out.println();
+                
             }
             else if (input == 4){
                 removeWord(lList);
+                System.out.println();
             }
         } while (input != 5);
     }
@@ -47,7 +51,7 @@ public class Main {
             iter = (ListIterator<String>) lList.iterator();
             while (input.hasNextLine()){
                 String word = input.nextLine();
-                moveIter(iter, word.toLowerCase());
+                moveIter(iter, word);
                 iter.add(word);
             }
             return lList;
@@ -55,7 +59,7 @@ public class Main {
             e.printStackTrace();
         }
         return null;
-    }
+    }`
 
     /** Method to move the iterator based on the position of the word
      * @param iter iterator
@@ -63,13 +67,9 @@ public class Main {
      */
     public static void moveIter(ListIterator<String> iter, String word){
         while(iter.hasNext() && iter.next().compareTo(word) <= 0);
-        if(iter.hasPrevious()){
-            iter.previous();
-        }
+        iter.previous();
         while (iter.hasPrevious() && iter.previous().compareTo(word) >= 0);
-        if (iter.hasNext()) {
-            iter.next();
-        }
+        iter.next();
     }
     
     /** Method for the user to add in word to linked list
