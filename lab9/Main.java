@@ -7,7 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
-/**Main class where linked list is made from read file */
+/**Main class where linked list is made from read file, and 
+ * user is given various menu options with respect to linked list
+*/
 public class Main {
     /** Main method where the user is prompted to choose what they want 
      *  to do with the linked list, repeats until user chooses to leave
