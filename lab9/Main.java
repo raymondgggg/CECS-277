@@ -4,14 +4,21 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Scanner;
-
+/**Main class where linked list is made from read file */
 public class Main {
+    
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         LinkedList<String> lList = readFile();
         printForward(lList);
-        
     }
 
+    
+    /** Method to read in the file "words.txt" and create linkedlist sorted
+     * @return LinkedList<String> sorted linked list
+     */
     public static LinkedList<String> readFile(){
         File inputFile = new File("words.txt");
         LinkedList<String> lList = new LinkedList<String>();
@@ -21,7 +28,9 @@ public class Main {
             lList.add(input.nextLine());
             iter = (ListIterator<String>) lList.iterator();
             while (input.hasNextLine()){
-                moveIter(iter, input.nextLine());
+                String word = input.nextLine().toLowerCase();
+                moveIter(iter, word.toLowerCase());
+                iter.add(word);
             }
             return lList;
         } catch (FileNotFoundException e){
@@ -30,55 +39,28 @@ public class Main {
         return null;
     }
 
+    
+    /** Method to move the iterator based on the position of the word
+     * @param iter iterator
+     * @param word word to be compared
+     */
     public static void moveIter(ListIterator<String> iter, String word){
-        boolean foundspot = false;
-        while(foundspot == false){
-            if(iter.hasNext() && (iter.hasPrevious() == false)){
-                if(iter.next().compareTo(word) < 0){
-                    iter.add(word);
-                    foundspot = true;
-                }
-                else{
-                    iter.previous();
-                    iter.add(word);
-                    foundspot = true;
-                }
-            }
-            else if(iter.hasNext() && iter.hasPrevious()){
-                if (iter.hasNext() && iter.next().compareTo(word) < 0);
-                else {
-                    iter.previous();
-                }
-                if (iter.hasPrevious() && iter.previous().compareTo(word) > 0);
-                else {
-                    iter.next();
-                }
-                if (iter.next().compareTo(word) > 0) {
-                    iter.previous();
-                    if (iter.previous().compareTo(word) < 0) {
-                        iter.next();
-                        iter.add(word);
-                        foundspot = true;
-                    } else {
-                        iter.next();
-                    }
-                } else {
-                    iter.previous();
-                }
-            }
-            else if (iter.hasPrevious() == true && iter.hasNext() == false){
-                if (iter.previous().compareTo(word) > 0){
-                    iter.add(word);
-                    foundspot = true;
-                }else{
-                    iter.next();
-                    iter.add(word);
-                    foundspot = true;
-                }
-            }
+        while(iter.hasNext() && iter.next().compareTo(word) <= 0);
+        if(iter.hasPrevious()){
+            iter.previous();
+        }
+
+        while(iter.hasPrevious() && iter.previous().compareTo(word) >= 0);
+        if(iter.hasNext()){
+            iter.next();
         }
     }
+    
 
+    
+    /** 
+     * @param lList
+     */
     public static void addWord(List<String> lList){
         ListIterator<String> iter =  (ListIterator<String>) lList.iterator();
         System.out.println("Add Word: ");
@@ -86,6 +68,10 @@ public class Main {
         moveIter(iter, usrWord);
     }
 
+    
+    /** 
+     * @param lList
+     */
     public static void removeWord(List<String> lList){
         ListIterator<String> iter = (ListIterator<String>) lList.iterator();
         System.out.println("Remove Word: ");
@@ -98,6 +84,10 @@ public class Main {
 
     }
 
+    
+    /** 
+     * @param lList
+     */
     public static void printForward(LinkedList<String> lList){
         ListIterator<String> iter = (ListIterator<String>) lList.iterator();
         while(iter.hasNext()){
@@ -105,6 +95,10 @@ public class Main {
         }
     }
 
+    
+    /** 
+     * @param lList
+     */
     public static void printReversed(LinkedList<String> lList){
         ListIterator<String> iter = (ListIterator<String>) lList.iterator();
         while(iter.hasNext()){
@@ -115,6 +109,10 @@ public class Main {
         }
     }
 
+    
+    /** 
+     * @return int
+     */
     public static int menu(){
         System.out.println("1.Display Words\n2.Display Reversed Words\n3.Add Word\n4.Remove word\n5.Quit");
         int usrInput = CheckInput.getIntRange(1, 5);
