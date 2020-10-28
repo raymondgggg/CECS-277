@@ -59,7 +59,7 @@ public class Main {
             e.printStackTrace();
         }
         return null;
-    }`
+    }
 
     /** Method to move the iterator based on the position of the word
      * @param iter iterator
