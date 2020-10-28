@@ -1,3 +1,6 @@
+
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
@@ -8,11 +11,27 @@ import java.util.Scanner;
 public class Main {
     
     /** 
-     * @param args
+     * 
+     * @param args no command line arguments
      */
     public static void main(String[] args) {
         LinkedList<String> lList = readFile();
-        printForward(lList);
+        int input = 0;
+        do{
+            input = menu();
+            if (input == 1){
+                printForward(lList);
+            }
+            else if(input == 2){
+                printReversed(lList);
+            }
+            else if (input == 3){
+                addWord(lList);
+            }
+            else if (input == 4){
+                removeWord(lList);
+            }
+        } while (input != 5);
     }
 
     
@@ -28,7 +47,7 @@ public class Main {
             lList.add(input.nextLine());
             iter = (ListIterator<String>) lList.iterator();
             while (input.hasNextLine()){
-                String word = input.nextLine().toLowerCase();
+                String word = input.nextLine();
                 moveIter(iter, word.toLowerCase());
                 iter.add(word);
             }
@@ -49,27 +68,25 @@ public class Main {
         if(iter.hasPrevious()){
             iter.previous();
         }
-
-        while(iter.hasPrevious() && iter.previous().compareTo(word) >= 0);
-        if(iter.hasNext()){
+        while (iter.hasPrevious() && iter.previous().compareTo(word) >= 0);
+        if (iter.hasNext()) {
             iter.next();
         }
+        
     }
     
-
-    
-    /** 
-     * @param lList
+    /** Method for the user to add in word to linked list
+     * @param lList the linked list
      */
     public static void addWord(List<String> lList){
         ListIterator<String> iter =  (ListIterator<String>) lList.iterator();
         System.out.println("Add Word: ");
         String usrWord = CheckInput.getString();
         moveIter(iter, usrWord);
+        iter.add(usrWord);
     }
 
-    
-    /** 
+    /** Method for the user to remove word from linkList
      * @param lList
      */
     public static void removeWord(List<String> lList){
@@ -79,14 +96,15 @@ public class Main {
         while(iter.hasNext()){
             if (iter.next().equals(usrstring)){
                 iter.remove();
+                return;
             }
         }
+        System.out.println("sorry word not in list");
 
     }
 
-    
-    /** 
-     * @param lList
+    /** Method to print the list in sorted order
+     * @param lList linked list
      */
     public static void printForward(LinkedList<String> lList){
         ListIterator<String> iter = (ListIterator<String>) lList.iterator();
@@ -95,9 +113,8 @@ public class Main {
         }
     }
 
-    
-    /** 
-     * @param lList
+    /** Method to print the list in reverse order
+     * @param lList linked list
      */
     public static void printReversed(LinkedList<String> lList){
         ListIterator<String> iter = (ListIterator<String>) lList.iterator();
@@ -109,9 +126,8 @@ public class Main {
         }
     }
 
-    
-    /** 
-     * @return int
+    /** Method to print out the menu options for the user and get input
+     * @return int the choice of the user
      */
     public static int menu(){
         System.out.println("1.Display Words\n2.Display Reversed Words\n3.Add Word\n4.Remove word\n5.Quit");
