@@ -6,21 +6,36 @@ public class Main {
      * @param args takes no command line arguments
      */
     public static void main(String[] args) {
-    
+        System.out.println("Mind Reader!");
+        String input = getInput();
+        HashMap<String, Integer> prevEntries = new HashMap<>();
+        String patternString = "";
+        do{
+            if (patternString.length() == 4) {
+                storePattern(prevEntries, patternString);
+                patternString = patternString.substring(1);
+            }
+            String prediction = makePrediction(prevEntries, patternString);
+            System.out.println("Comp: " + prediction);
+            patternString += input;
+        }while(input.equals("Q") == false);
     }
 
     /** Method to make a prediction of what the user will input by looking at hashmap and checking to see
      *  if there are any familiar patterns
      * @param prevEntries Hashmap that will be used to try and predict user input
      * @param patternString past 4 entries of the user
+     * @return String literal that the computer predicted
      */
     public static String makePrediction(HashMap<String,Integer> prevEntries, String patternString){
+        String [] randomChoice = {"X", "O"};
+        if (patternString.length() < 4)
+            return randomChoice[ThreadLocalRandom.current().nextInt(2)];
+
         String lastThreeValues = patternString.substring(1);
         String xPrediction = lastThreeValues + "X";
         String oPrediction = lastThreeValues + "O";
-        String [] randomChoice = {"X", "O"};
         String returnedString;
-
         if ((prevEntries.containsKey(xPrediction) == false) && (prevEntries.containsKey(oPrediction) == false))
             return randomChoice[ThreadLocalRandom.current().nextInt(2)];
 
