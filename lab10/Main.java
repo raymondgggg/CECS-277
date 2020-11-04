@@ -3,9 +3,11 @@
 //Raymond Guevara Lozano
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
-/** Main class where all the methods are stored to make program run */
+/** Main class where all the methods are stored to make program run 
+ * to try to guess user input
+*/
 public class Main {
-    /** Main method where we use the previous three methods int the class to 
+    /** Main method where we use the previous three methods in the class to
      *  try and predict what the user will input until they quit the game
      * @param args takes no command line arguments
      */
