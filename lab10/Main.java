@@ -1,3 +1,6 @@
+//Prince Angulo
+//Kevin Julca Garcia
+//Raymond Guevara Lozano
 import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 /** Main class where all the methods are stored to make program run */
@@ -21,7 +24,7 @@ public class Main {
                 points++;
             double calcultionPoints = points;
             System.out.println("Comp: " + prediction);
-            System.out.println("% Wins: " + (calcultionPoints / rounds) * 100);
+            System.out.printf("%% Wins: %.1f\n", ((calcultionPoints / rounds) * 100));
             if (patternString.length() == 4)
                 patternString = patternString.substring(1);
             patternString += input;
