@@ -2,12 +2,15 @@ import java.util.HashMap;
 import java.util.concurrent.ThreadLocalRandom;
 /** Main class where all the methods are stored to make program run */
 public class Main {
-    /** 
+    /** Main method where we use the previous three methods int the class to 
+     *  try and predict what the user will input until they quit the game
      * @param args takes no command line arguments
      */
     public static void main(String[] args) {
         System.out.println("Mind Reader!");
         String input = getInput();
+        int points = 0;
+        int rounds = 1;
         HashMap<String, Integer> prevEntries = new HashMap<>();
         String patternString = "";
         do{
@@ -16,8 +19,13 @@ public class Main {
                 patternString = patternString.substring(1);
             }
             String prediction = makePrediction(prevEntries, patternString);
+            if (prediction.equals(input))
+                points++;
+            double calcultionPoints = points;
             System.out.println("Comp: " + prediction);
+            System.out.println("% Wins: " + (calcultionPoints / rounds) * 100);
             patternString += input;
+            input = getInput();
         }while(input.equals("Q") == false);
     }
 
