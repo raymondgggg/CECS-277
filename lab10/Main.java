@@ -14,18 +14,19 @@ public class Main {
         HashMap<String, Integer> prevEntries = new HashMap<>();
         String patternString = "";
         do{
-            if (patternString.length() == 4) {
+            if (patternString.length() == 4) 
                 storePattern(prevEntries, patternString);
-                patternString = patternString.substring(1);
-            }
             String prediction = makePrediction(prevEntries, patternString);
             if (prediction.equals(input))
                 points++;
             double calcultionPoints = points;
             System.out.println("Comp: " + prediction);
             System.out.println("% Wins: " + (calcultionPoints / rounds) * 100);
+            if (patternString.length() == 4)
+                patternString = patternString.substring(1);
             patternString += input;
             input = getInput();
+            rounds++;
         }while(input.equals("Q") == false);
     }
 
