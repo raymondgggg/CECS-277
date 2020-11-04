@@ -17,6 +17,8 @@ public class Main {
         HashMap<String, Integer> prevEntries = new HashMap<>();
         String patternString = "";
         do{
+            if (input.equals("Q"))
+                break;
             if (patternString.length() == 4) 
                 storePattern(prevEntries, patternString);
             String prediction = makePrediction(prevEntries, patternString);
