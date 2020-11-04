@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.concurrent.ThreadLocalRandom;
 /** Main class where all the methods are stored to make program run */
 public class Main {
     /** 
@@ -8,12 +9,34 @@ public class Main {
     
     }
 
-    /** 
-     * @param prevEntries
-     * @param patternString
+    /** Method to make a prediction of what the user will input by looking at hashmap and checking to see
+     *  if there are any familiar patterns
+     * @param prevEntries Hashmap that will be used to try and predict user input
+     * @param patternString past 4 entries of the user
      */
-    public static void makePrediction(HashMap<String,Integer> prevEntries, String patternString){
-        
+    public static String makePrediction(HashMap<String,Integer> prevEntries, String patternString){
+        String lastThreeValues = patternString.substring(1);
+        String xPrediction = lastThreeValues + "X";
+        String oPrediction = lastThreeValues + "O";
+        String [] randomChoice = {"X", "O"};
+        String returnedString;
+
+        if ((prevEntries.containsKey(xPrediction) == false) && (prevEntries.containsKey(oPrediction) == false))
+            return randomChoice[ThreadLocalRandom.current().nextInt(2)];
+
+        if (prevEntries.containsKey(xPrediction) && prevEntries.containsKey(oPrediction)){
+            if (prevEntries.get(xPrediction) > prevEntries.get(oPrediction))
+                returnedString = xPrediction.substring(3);
+            else
+                returnedString = oPrediction.substring(3);
+        }
+        else if(prevEntries.containsKey(xPrediction) && prevEntries.containsKey(oPrediction) == false){
+            returnedString = xPrediction.substring(3);
+        }
+        else {
+            returnedString = oPrediction.substring(3);
+        }
+        return returnedString;
     }
 
     /** 
@@ -46,7 +69,7 @@ public class Main {
     public static void storePattern(HashMap<String, Integer> prevEntries, String patternString){
         if (prevEntries.containsKey(patternString)){
             int prevCount = prevEntries.get(patternString);
-            prevEntries.put(patternString, prevCount++);
+            prevEntries.put(patternString, ++prevCount);
             return;
         }
         prevEntries.put(patternString, 1);
