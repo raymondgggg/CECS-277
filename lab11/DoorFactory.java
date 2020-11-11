@@ -1,4 +1,10 @@
+/**Door Factory class where */
 public class DoorFactory {
+    
+    /** 
+     * @param type
+     * @return Door
+     */
     public Door createDoor(int type){
         Door d;
         if (type == 1) {
@@ -11,6 +17,10 @@ public class DoorFactory {
         return d;
     }
 
+    
+    /** 
+     * @param type
+     */
     public void openDoor(int type){
         Door d = createDoor(type);
         System.out.println(d.examine());
