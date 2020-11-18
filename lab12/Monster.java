@@ -20,7 +20,6 @@ public abstract class Monster {
      */
     public abstract int attack();
 
-    
     /** Method to get monster name
      * @return String name of the monster
      */

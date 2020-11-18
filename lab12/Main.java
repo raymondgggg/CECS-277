@@ -28,24 +28,24 @@ public class Main{
         while (choice != 4){
             System.out.println("Add an abilitiy:");
             System.out.println("1. Fire\n2. Lasers\n3. Poison\n4. Quit");
-            choice = CheckInput.getIntRange(1, 3);
+            choice = CheckInput.getIntRange(1, 4);
             if (choice == 4){
                 System.out.println("Exiting");
                 break;
             }
                 
             if (choice == 1) {
-                Fire f = new Fire(m, "Firey " + m.getName(), m.getHP() + 2);
+                Fire f = new Fire(m, m.getName(), m.getHP());
                 m = f; // update the monster object to include the new abilities
                 System.out.println(m.getName() + " has " + m.getHP() + " hp, and attacks for " + m.attack() + " damage.");
 
             } else if (choice == 2) {
-                Lasers l = new Lasers(m, "Lasery " + m.getName(), m.getHP() + 3);
+                Lasers l = new Lasers(m, m.getName(), m.getHP());
                 m = l; //update the monster object to include the new abilities
                 System.out.println(m.getName() + " has " + m.getHP() + " hp, and attacks for " + m.attack() + " damage.");
 
             } else {
-                Poison p = new Poison(m, "Poisonous " + m.getName(), m.getHP() + 4);
+                Poison p = new Poison(m, m.getName(), m.getHP());
                 m = p; //update the monster object to include the new abilities
                 System.out.println(m.getName() + " has " + m.getHP() + " hp, and attacks for " + m.attack() + " damage.");
             }
