@@ -8,6 +8,7 @@ public class Lasers extends MonsterDecorator{
      */
     public Lasers(Monster monster, String name, int hp) {
         super(monster, "Lasery " + name, hp + 3); // update monster with new values
+        
     }
 
     /**

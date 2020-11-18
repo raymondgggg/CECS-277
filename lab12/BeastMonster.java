@@ -7,7 +7,7 @@ public class BeastMonster extends Monster{
      */
     public BeastMonster(){
         super("Beast", 7);
-        this.attackDamage = 3;
+        this.attackDamage = 3; // base attack damage
     }
 
     /** Method to get the attack damage for the monster

@@ -8,7 +8,7 @@ public class AlienMonster extends Monster{
      */
     public AlienMonster(){
         super("Alien", 6);
-        this.attackDamage = 1;
+        this.attackDamage = 1; // base attack damage
     }
 
     /** Method to get the attack damage for the alien

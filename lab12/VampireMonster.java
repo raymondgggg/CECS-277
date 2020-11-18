@@ -7,7 +7,7 @@ public class VampireMonster extends Monster {
      */
     public VampireMonster(){
         super("Vampire", 4);
-        this.attackDamage = 5;
+        this.attackDamage = 5; // base attack damage
     }
 
     /** Method to get the attack damange of vampire

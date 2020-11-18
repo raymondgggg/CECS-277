@@ -11,18 +11,18 @@ public class Main{
         System.out.println("Monster Creator!");
         System.out.println("Choose a Base Monster:\n1. Alien\n2. Beast\n3. Vampire");
         int choice = CheckInput.getIntRange(1, 3);
-        Monster m;
+        Monster monster;
         //instantiate proper monster based off user input
         if (choice == 1){
-            m = new AlienMonster();
+            monster = new AlienMonster();
         }
         else if (choice == 2){
-            m = new BeastMonster();
+            monster = new BeastMonster();
         }
         else{
-            m = new VampireMonster();
+            monster = new VampireMonster();
         }
-        System.out.println(m.getName() + " has " + m.getHP() + " hp, and attacks for " + m.attack() + " damage.");
+        System.out.println(monster.getName() + " has " + monster.getHP() + " hp, and attacks for " + monster.attack() + " damage.");
 
         choice = 0;
         while (choice != 4){
@@ -35,19 +35,19 @@ public class Main{
             }
                 
             if (choice == 1) {
-                Fire f = new Fire(m, m.getName(), m.getHP());
-                m = f; // update the monster object to include the new abilities
-                System.out.println(m.getName() + " has " + m.getHP() + " hp, and attacks for " + m.attack() + " damage.");
+                Fire f = new Fire(monster, monster.getName(), monster.getHP());
+                monster = f; // update the monster object to include the new abilities
+                System.out.println(monster.getName() + " has " + monster.getHP() + " hp, and attacks for " + monster.attack() + " damage.");
 
             } else if (choice == 2) {
-                Lasers l = new Lasers(m, m.getName(), m.getHP());
-                m = l; //update the monster object to include the new abilities
-                System.out.println(m.getName() + " has " + m.getHP() + " hp, and attacks for " + m.attack() + " damage.");
+                Lasers l = new Lasers(monster, monster.getName(), monster.getHP());
+                monster = l; //update the monster object to include the new abilities
+                System.out.println(monster.getName() + " has " + monster.getHP() + " hp, and attacks for " + monster.attack() + " damage.");
 
             } else {
-                Poison p = new Poison(m, m.getName(), m.getHP());
-                m = p; //update the monster object to include the new abilities
-                System.out.println(m.getName() + " has " + m.getHP() + " hp, and attacks for " + m.attack() + " damage.");
+                Poison p = new Poison(monster, monster.getName(), monster.getHP());
+                monster = p; //update the monster object to include the new abilities
+                System.out.println(monster.getName() + " has " + monster.getHP() + " hp, and attacks for " + monster.attack() + " damage.");
             }
         }
     }
