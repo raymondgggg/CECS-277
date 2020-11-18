@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 /** 
  * Static functions used to check console input for validity.
  *
