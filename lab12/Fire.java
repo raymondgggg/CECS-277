@@ -16,6 +16,4 @@ public class Fire extends MonsterDecorator{
     public int attack(){
         return 4 + super.attack();
     }
-    
-    
 }
