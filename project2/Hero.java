@@ -8,6 +8,8 @@ public class Hero extends Entity implements Magical{
     private Map map;
     /**Location of the hero */
     private Point location;
+    /**Variable to keep track of the gold the hero currently has */
+    private int gold;
 
     /**Constructor - instantiates hero object by calling super constructor, and initializing map
      * and location fields
@@ -17,6 +19,7 @@ public class Hero extends Entity implements Magical{
         this.items = new ArrayList<Item>();
         this.map = m;
         this.location = this.map.findStart();
+        this.gold = 0;
     }
 
     /** Method that combines toString of entity as well as inventory of hero
@@ -81,8 +84,10 @@ public class Hero extends Entity implements Magical{
     /** Method for hero to drop item from inventory 
      * @param index of item to be dropped
      */
-    public void dropItem(int index){
+    public Item dropItem(int index){
+        Item i = this.items.get(index);
         this.items.remove(index);
+        return i;
     }
 
     /** Method to see if hero has potion in their inventory
@@ -150,6 +155,69 @@ public class Hero extends Entity implements Magical{
         this.map.reveal(this.location);
         this.location.y--;
         return this.map.getCharAtLoc(this.location);
+    }
+
+    /**
+     * Method to return the current gold of the hero
+     * @return int gold of the hero
+     */
+    public int getGold() {
+        return this.gold;
+    }
+
+    /**
+     * method that simulates the hero adding more gold to the gold 
+     * instance variable
+     * @param g the gold that shall be added to the current gold of the hero
+     */
+    public void collectGold(int g){
+        this.gold += g;
+    }
+
+    /**
+     * Method that simulates the hero spending gold
+     * @param g the amount of gold that shall be taken away from the current amount of gold the hero has
+     */
+    public void spendGold(int g){
+        this.gold -= g;
+    }
+
+    /**
+     * Method to the find the first index of first armor item in inventory
+     * @return the index of the first armor item in 
+     * the inventory, -1 if not found.
+     */
+    public int hasArmorItem(){
+        for (int i = 0; i < items.size(); i++){
+            if (items.get(i).getType() == 'a'){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Method to get boolean 
+     * @return boolean value of if key is in items or not
+     */
+    public boolean hasKey(){
+        for (Item item : items){
+            if (item.getType() == 'k'){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Method to remove the first occurance of the key in the hero's item inventory.
+     */
+    public void useKey(){
+        for (Item item : items){
+            if (item.getType() == 'k'){
+                this.items.remove(item);
+            }
+        }
     }
 
     /** Method that handles magic missle attack, entity passed in hit with random number of damage

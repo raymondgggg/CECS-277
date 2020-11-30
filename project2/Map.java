@@ -8,10 +8,12 @@ public class Map {
     /**The revealed status of the map */
     private boolean[][] revealed;
 
+    private static Map mInstance = null;
+
     /**Constructor - instantiates map and revealed arrays
      * the populates the revealed array with all false values
      */
-    public Map(){
+    private Map(){
         this.map = new char[5][5];
         this.revealed = new boolean[5][5]; 
     }
@@ -95,5 +97,16 @@ public class Map {
      */
     public void removeCharAtLoc(Point p){
         this.map[p.x][p.y] = 'n';
+    }
+    
+    /**
+     * Method to get single map instance 
+     * @return Map single instance
+     */
+    public static Map getInstance(){
+        if (mInstance == null)
+            mInstance = new Map();
+        return mInstance;
+        
     }
 }

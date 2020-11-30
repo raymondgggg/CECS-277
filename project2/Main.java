@@ -13,13 +13,13 @@ public class Main {
         String name = CheckInput.getString();
         int usrChoice = 0;//directional choice for the game
         int level = 0; //level++ to move on to next level
-        int[] levels = { 1, 2, 3 }; //store level numbers in array
+        int[] levels = { 1, 2, 3 }; //store map numbers in array
 
         //load in necessary components needed for the game
         Map map = new Map();
         map.loadMap(levels[level % levels.length]); // use modulus operator to get num from [0-2] for index of levels array
         Hero hero = new Hero(name, map);
-        ItemGenerator ig = new ItemGenerator();
+        ItemGenerator ig = ItemGenerator.getInstance();
         EnemyGenerator eg = new EnemyGenerator(ig);
 
         //loop where the game takes place, prints out hero info and looks through map for 'm', 'i', or 'n'
@@ -162,54 +162,7 @@ public class Main {
             return true;
         }
         else if (usrinput == 2){ //move hero to valid adjacent room randomly
-            if(h.getLocation().x == 0 && h.getLocation().y == 0){
-                int runLocation = ThreadLocalRandom.current().nextInt(1,3);
-                if (runLocation == 1){
-                    h.goSouth();
-                }
-                else{
-                    h.goEast();
-                }
-            }
-            else if(h.getLocation().x == 0 || h.getLocation().y == 4){
-                int runLocation = ThreadLocalRandom.current().nextInt(1,3);
-                if (runLocation == 1) {
-                    h.goWest();
-                } else {
-                    h.goSouth();
-                }
-            }
-            else if (h.getLocation().x == 4 && h.getLocation().y == 0){
-                int runLocation = ThreadLocalRandom.current().nextInt(1, 3);
-                if (runLocation == 1) {
-                    h.goNorth();
-                } else {
-                    h.goEast();
-                }
-            }
-            else if (h.getLocation().x == 4 && h.getLocation().y == 4) {
-                int runLocation = ThreadLocalRandom.current().nextInt(1, 3);
-                if (runLocation == 1) {
-                    h.goNorth();
-                } else {
-                    h.goWest();
-                }
-            }
-            else{
-                int runLocation = ThreadLocalRandom.current().nextInt(1,5);
-                if (runLocation == 1){
-                    h.goNorth();
-                }
-                else if (runLocation == 2){
-                    h.goSouth();
-                }
-                else if (runLocation == 3){
-                    h.goWest();
-                }
-                else{
-                    h.goEast();
-                }
-            }
+            moveHero(h);
             return false;
         }
         else{
@@ -229,6 +182,95 @@ public class Main {
         boolean itemTaken = h.pickUpItems(ig.generateItem());
         if (itemTaken){
             m.removeCharAtLoc(h.getLocation());
+        }
+    }
+
+    public static void store(Hero h){
+        ItemGenerator ig = ItemGenerator.getInstance();
+        System.out.println("You are at now at the store:");
+
+        System.out.println("1. Buy Items\n2. Sell Items\n3. Exit store");
+        int usrChoice = CheckInput.getIntRange(1, 3);
+        if (usrChoice == 1){
+            if (h.getGold() < ig.getPotion().getValue()){
+                System.out.println("You do not have enough gold to purchase any items, sell items "
+                        + "or adventure some more to get more gold.");
+            }
+            else{
+                System.out.println("1. Health Potion - 25 gold\n2. Key - 50 gold");
+                usrChoice = CheckInput.getIntRange(1, 2);
+                if(usrChoice == 1){
+                    h.spendGold(ig.getPotion().getValue());
+                    h.pickUpItems(ig.getPotion());
+                }
+                else if (usrChoice == 2 && h.getGold() >= 50){
+                    h.spendGold(ig.getKey().getValue());
+                    h.pickUpItems(ig.getKey());
+                }
+                else{ //case when hero trys to buy key without enough gold
+                    System.out.println("You do not have enough gold to buy a key.");
+                }
+            }
+        }
+        else if (usrChoice == 2){
+            h.itemsToString();
+            System.out.println("Which of your items would you like to sell?");
+            usrChoice = CheckInput.getIntRange(1, h.getNumItems());
+            Item soldItem = h.dropItem(usrChoice);
+            System.out.println("You have sold your " +  soldItem.getName() + " for " + soldItem.getValue() + " gold.");
+            h.collectGold(soldItem.getValue());
+        }
+        else{
+            System.out.println("You are now leaving the store.");
+            moveHero(h);
+        }
+    }
+
+    /**
+     * Helper method to move hero to valid adjacent room in the instance when 
+     * they run away from enemy or when they choose to leave the store.
+     * @param h hero that will be moved to new spot on the map
+     */
+    public static void moveHero(Hero h){
+        if (h.getLocation().x == 0 && h.getLocation().y == 0) {
+            int runLocation = ThreadLocalRandom.current().nextInt(1, 3);
+            if (runLocation == 1) {
+                h.goSouth();
+            } else {
+                h.goEast();
+            }
+        } else if (h.getLocation().x == 0 || h.getLocation().y == 4) {
+            int runLocation = ThreadLocalRandom.current().nextInt(1, 3);
+            if (runLocation == 1) {
+                h.goWest();
+            } else {
+                h.goSouth();
+            }
+        } else if (h.getLocation().x == 4 && h.getLocation().y == 0) {
+            int runLocation = ThreadLocalRandom.current().nextInt(1, 3);
+            if (runLocation == 1) {
+                h.goNorth();
+            } else {
+                h.goEast();
+            }
+        } else if (h.getLocation().x == 4 && h.getLocation().y == 4) {
+            int runLocation = ThreadLocalRandom.current().nextInt(1, 3);
+            if (runLocation == 1) {
+                h.goNorth();
+            } else {
+                h.goWest();
+            }
+        } else {
+            int runLocation = ThreadLocalRandom.current().nextInt(1, 5);
+            if (runLocation == 1) {
+                h.goNorth();
+            } else if (runLocation == 2) {
+                h.goSouth();
+            } else if (runLocation == 3) {
+                h.goWest();
+            } else {
+                h.goEast();
+            }
         }
     }
 }

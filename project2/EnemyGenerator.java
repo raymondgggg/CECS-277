@@ -10,10 +10,11 @@ public class EnemyGenerator {
     /**items read from item file */
     private ItemGenerator ig;
 
+    private static EnemyGenerator egInstance = null;
     /**Constructor - read the file and creat new enemy based off whether 
      * or not they are magical, add random health bump to enemy.
      */
-    public EnemyGenerator(ItemGenerator ig){
+    private EnemyGenerator(ItemGenerator ig){
         this.ig = ig;
         this.enemyList = new ArrayList<>();
         File enemyList = new File("EnemyList.txt");
@@ -56,6 +57,17 @@ public class EnemyGenerator {
        Enemy e = new Enemy(this.enemyList.get(randIndex).getName(), this.enemyList.get(randIndex).getMaxHP(),
                this.enemyList.get(randIndex).getItem());
         return e;
+    }
+
+    /**
+     * Singleton method to return instance of the enemyGene
+     * @param ig item generator needed for the item of the enemey
+     * @return instance of enemy generator
+     */
+    public static EnemyGenerator getInstance(ItemGenerator ig){
+        if (egInstance == null)
+            egInstance = new EnemyGenerator(ig);
+        return egInstance;
     }
     
 }
