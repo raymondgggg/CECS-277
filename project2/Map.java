@@ -7,7 +7,7 @@ public class Map {
     private char[][] map;
     /**The revealed status of the map */
     private boolean[][] revealed;
-
+    /**single instance of the map class */
     private static Map mInstance = null;
 
     /**Constructor - instantiates map and revealed arrays
