@@ -35,17 +35,17 @@ public class Main{
             }
                 
             if (choice == 1) {
-                Fire f = new Fire(monster, monster.getName(), monster.getHP());
+                Fire f = new Fire(monster);
                 monster = f; // update the monster object to include the new abilities
                 System.out.println(monster.getName() + " has " + monster.getHP() + " hp, and attacks for " + monster.attack() + " damage.");
 
             } else if (choice == 2) {
-                Lasers l = new Lasers(monster, monster.getName(), monster.getHP());
+                Lasers l = new Lasers(monster);
                 monster = l; //update the monster object to include the new abilities
                 System.out.println(monster.getName() + " has " + monster.getHP() + " hp, and attacks for " + monster.attack() + " damage.");
 
             } else {
-                Poison p = new Poison(monster, monster.getName(), monster.getHP());
+                Poison p = new Poison(monster);
                 monster = p; //update the monster object to include the new abilities
                 System.out.println(monster.getName() + " has " + monster.getHP() + " hp, and attacks for " + monster.attack() + " damage.");
             }

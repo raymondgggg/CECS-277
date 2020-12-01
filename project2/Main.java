@@ -16,11 +16,11 @@ public class Main {
         int[] levels = { 1, 2, 3 }; //store map numbers in array
 
         //load in necessary components needed for the game
-        Map map = new Map();
+        Map map = Map.getInstance();
         map.loadMap(levels[level % levels.length]); // use modulus operator to get num from [0-2] for index of levels array
         Hero hero = new Hero(name, map);
         ItemGenerator ig = ItemGenerator.getInstance();
-        EnemyGenerator eg = new EnemyGenerator(ig);
+        EnemyGenerator eg = EnemyGenerator.getInstance(ig);
 
         //loop where the game takes place, prints out hero info and looks through map for 'm', 'i', or 'n'
         //to use appropriate methods for rooms

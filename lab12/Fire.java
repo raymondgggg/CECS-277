@@ -6,8 +6,8 @@ public class Fire extends MonsterDecorator{
      * @param name - the new name of the monster
      * @param hp - the new hp of the monster
      */
-    public Fire(Monster monster, String name, int hp) {
-        super(monster, "Firey " + name, hp + 2); //update monster with new values
+    public Fire(Monster monster) {
+        super(monster, "Firey " + monster.getName(), monster.getHP() + 2); //update monster with new values
     }
     /** 
      * Method that uses call stack for attack method for Monster object to find the damage the monster gives

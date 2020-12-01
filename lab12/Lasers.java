@@ -6,8 +6,8 @@ public class Lasers extends MonsterDecorator{
      * @param name - the new name of the monster
      * @param hp - the new healthpoints of the monster
      */
-    public Lasers(Monster monster, String name, int hp) {
-        super(monster, "Lasery " + name, hp + 3); // update monster with new values
+    public Lasers(Monster monster) {
+        super(monster, "Lasery " + monster.getName(), monster.getHP() + 3); // update monster with new values
         
     }
 

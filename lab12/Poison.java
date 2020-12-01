@@ -7,8 +7,8 @@ public class Poison extends MonsterDecorator{
      * @param name     - the new name of the monster
      * @param hp       - the new healthpoints of the monster
      */
-    public Poison(Monster monster,String name, int hp) {
-        super(monster, "Poisonous " + name, hp + 4); // update monster with new values
+    public Poison(Monster monster) {
+        super(monster, "Poisonous " + monster.getName(), monster.getHP() + 4); // update monster with new values
     }
 
     /**
