@@ -1,45 +1,18 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 /**class to generate enemies read from files */
 public class EnemyGenerator {
-    /**list of enemies read from the file */
-    private ArrayList<Enemy> enemyList;
     /**items read from item file */
     private ItemGenerator ig;
 
     private static EnemyGenerator egInstance = null;
-    /**Constructor - read the file and creat new enemy based off whether 
-     * or not they are magical, add random health bump to enemy.
+
+    /**Constructor - No longer reads from file, will initlize the 
+     * ItemGenerator so that we can use it when we randomly generate one
+     * of the four base enemies and decorate as needed in the generate 
+     * enemy method
      */
     private EnemyGenerator(ItemGenerator ig){
         this.ig = ig;
-        this.enemyList = new ArrayList<>();
-        File enemyList = new File("EnemyList.txt");
-        try{
-            Scanner enemy = new Scanner(enemyList);
-            while(enemy.hasNextLine()){
-                int randHealthBump = ThreadLocalRandom.current().nextInt(5);
-                String line = enemy.nextLine();
-                String[] values = line.split(",");
-                String name = values[0];
-                int health = Integer.parseInt(values[1]) + randHealthBump;
-                String type = values[2];
-                if (type.equals("m")){
-                    Enemy me = new MagicalEnemy(name, health, ig.generateItem());
-                    this.enemyList.add(me);
-                }
-                else{
-                    Enemy e = new Enemy(name, health, ig.generateItem());
-                    this.enemyList.add(e);
-                }
-            }
-        }   
-        catch(FileNotFoundException e){
-            e.printStackTrace();
-        }     
     }
 
     
@@ -47,16 +20,28 @@ public class EnemyGenerator {
      *  return the new enemy
      * @return Enemy randomly chosen from template
      */
-    public Enemy generateEnemy(){
-       int randIndex = ThreadLocalRandom.current().nextInt(this.enemyList.size());
-       if (this.enemyList.get(randIndex) instanceof MagicalEnemy){
-           Enemy e = new MagicalEnemy(this.enemyList.get(randIndex).getName(), this.enemyList.get(randIndex).getMaxHP(),
-                   this.enemyList.get(randIndex).getItem());
-            return e;
+    public Enemy generateEnemy(int lvl){
+       Enemy[] baseEnemies = {new Troll(this.ig.generateItem()), new Froglok(this.ig.generateItem()),
+                                new Orc(this.ig.generateItem()), new Goblin(this.ig.generateItem())};
+        
+       int randEnemyIndex = ThreadLocalRandom.current().nextInt(baseEnemies.length);
+    
+       Enemy enemy = baseEnemies[randEnemyIndex];
+       if(lvl == 1)
+           return enemy;
+       int decorateChoice = ThreadLocalRandom.current().nextInt(2); // 0 for Warrior, 1 for Warlock
+       // decorate with either warrior or warlock for each level greater than one
+       for (int i = 0; i < lvl; i++){
+           if (decorateChoice == 0){
+               Warrior warrior = new Warrior(enemy);
+               enemy = warrior;
+           }
+           else{
+               Warlock warlock = new Warlock(enemy);
+               enemy = warlock;
+           }
        }
-       Enemy e = new Enemy(this.enemyList.get(randIndex).getName(), this.enemyList.get(randIndex).getMaxHP(),
-               this.enemyList.get(randIndex).getItem());
-        return e;
+       return enemy;
     }
 
     /**

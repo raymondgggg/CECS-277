@@ -12,12 +12,12 @@ public class Main {
         System.out.print("What is your name traveler? ");
         String name = CheckInput.getString();
         int usrChoice = 0;//directional choice for the game
-        int level = 0; //level++ to move on to next level
+        int level = 1; //level++ to move on to next level
         int[] levels = { 1, 2, 3 }; //store map numbers in array
 
         //load in necessary components needed for the game
         Map map = Map.getInstance();
-        map.loadMap(levels[level % levels.length]); // use modulus operator to get num from [0-2] for index of levels array
+        map.loadMap(levels[(level-1) % levels.length]); // use modulus operator to get num from [0-2] for index of levels array
         Hero hero = new Hero(name, map);
         ItemGenerator ig = ItemGenerator.getInstance();
         EnemyGenerator eg = EnemyGenerator.getInstance(ig);
@@ -54,8 +54,8 @@ public class Main {
                 itemRoom(hero, map, ig);
             }
             //Monster room
-            else if (monsterRoom(hero, map, eg, levels[level % levels.length])){
-                Enemy e = eg.generateEnemy();
+            else if (monsterRoom(hero, map, eg, levels[(level-1) % levels.length])){
+                Enemy e = eg.generateEnemy(level);
                 System.out.println("You've encountered a " + e.getName());
 
                 while(fight(hero, e));
@@ -71,7 +71,7 @@ public class Main {
             else if (map.getCharAtLoc(hero.getLocation()) == 'f') {
                 System.out.println("Next level:\n");
                 level++;
-                map.loadMap(levels[level % levels.length]);
+                map.loadMap(levels[(level-1) % levels.length]);
                 hero.heal(hero.getMaxHP());
             }
         }while(hero.getHP() != 0);
@@ -106,7 +106,7 @@ public class Main {
      * @return boolean value if fight is happening
      */
     public static boolean fight(Hero h, Enemy e){
-        if (e instanceof Magical){ //check if the Enemy e is a MagicalEnemy, if so downcast to use methods for MagicalEnemy
+        if (e instanceof Magical){ 
             e = (MagicalEnemy) e;
         }
         System.out.println(e.toString());
