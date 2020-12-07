@@ -31,7 +31,7 @@ public class EnemyGenerator {
            return enemy;
        int decorateChoice = ThreadLocalRandom.current().nextInt(2); // 0 for Warrior, 1 for Warlock
        // decorate with either warrior or warlock for each level greater than one
-       for (int i = 0; i < lvl; i++){
+       for (int i = 1; i < lvl; i++){
            if (decorateChoice == 0){
                Warrior warrior = new Warrior(enemy);
                enemy = warrior;

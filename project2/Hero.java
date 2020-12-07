@@ -201,8 +201,8 @@ public class Hero extends Entity implements Magical{
      * @return boolean value of if key is in items or not
      */
     public boolean hasKey(){
-        for (Item item : items){
-            if (item.getType() == 'k'){
+        for (int i = 0; i < this.items.size(); i++){
+            if (this.items.get(i).getType() == 'k'){
                 return true;
             }
         }
@@ -213,9 +213,9 @@ public class Hero extends Entity implements Magical{
      * Method to remove the first occurance of the key in the hero's item inventory.
      */
     public void useKey(){
-        for (Item item : items){
-            if (item.getType() == 'k'){
-                this.items.remove(item);
+        for (int i = 0; i < this.items.size(); i++){
+            if (this.items.get(i).getType() == 'k'){
+                this.items.remove(i);
             }
         }
     }

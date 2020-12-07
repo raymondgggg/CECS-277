@@ -20,6 +20,7 @@ public class Warlock extends EnemyDecorator implements Magical {
      */
     @Override
     public String attack(Entity e) {
+        
         int randAttack = ThreadLocalRandom.current().nextInt(1, 4); // randomly determine the three types of possible
                                                                     // attacks
         String attack;

@@ -48,6 +48,7 @@ public class Main {
             //returning to the start
             if (map.getCharAtLoc(hero.getLocation()) == 's'){
                 System.out.println("You are back at the start.");
+                store(hero);
             }
             //Item room
             else if (map.getCharAtLoc(hero.getLocation()) == 'i'){
@@ -69,10 +70,17 @@ public class Main {
             }
             //Final spot of map, move onto next map
             else if (map.getCharAtLoc(hero.getLocation()) == 'f') {
-                System.out.println("Next level:\n");
-                level++;
-                map.loadMap(levels[(level-1) % levels.length]);
-                hero.heal(hero.getMaxHP());
+                if (hero.hasKey()){
+                    System.out.println("Next level:\n");
+                    level++;
+                    map.loadMap(levels[(level - 1) % levels.length]);
+                    hero.heal(hero.getMaxHP());
+                    hero.useKey();
+                }
+                else{
+                    System.out.println("You need a key to move forward, seek out a key and then return.");
+                    moveHero(hero);
+                }
             }
         }while(hero.getHP() != 0);
         //display messages for when game is over
@@ -106,9 +114,9 @@ public class Main {
      * @return boolean value if fight is happening
      */
     public static boolean fight(Hero h, Enemy e){
-        if (e instanceof Magical){ 
-            e = (MagicalEnemy) e;
-        }
+        // if (e instanceof Magical){ 
+        //     e = (MagicalEnemy) e;
+        // }
         System.out.println(e.toString());
         int usrinput = 0;
         if (h.hasPotion()){
@@ -125,7 +133,14 @@ public class Main {
             if (attack == 1){
                 System.out.println(h.attack(e));
                 if (e.getHP() > 0){
-                    System.out.println(e.attack(h));
+                    if (h.hasArmorItem() != -1){
+                        System.out.println("Your armor blocks " + e.getName() + "'s attack.");
+                        h.dropItem(h.hasArmorItem());
+                    }
+                    else{
+                        System.out.println(e.attack(h));
+                    }
+                   
                 }
             }
             else if (attack == 2){
@@ -134,26 +149,40 @@ public class Main {
                 if(magicAttack == 1){
                     System.out.println(h.magicMissile(e));
                     if (e.getHP() > 0){
-                        System.out.println(e.attack(h));
+                        if (h.hasArmorItem() != -1) {
+                            System.out.println("Your armor blocks " + e.getName() + "'s attack.");
+                            h.dropItem(h.hasArmorItem());
+                        } else {
+                            System.out.println(e.attack(h));
+                        }
                     }
                 }
                 else if (magicAttack == 2){
                     System.out.println(h.fireball(e));
                     if (e.getHP() > 0){
-                        System.out.println(e.attack(h));
+                        if (h.hasArmorItem() != -1) {
+                            System.out.println("Your armor blocks " + e.getName() + "'s attack.");
+                            h.dropItem(h.hasArmorItem());
+                        } else {
+                            System.out.println(e.attack(h));
+                        }
                     }
                 }
                 else {
                     System.out.println(h.thunderclap(e));
                     if (e.getHP() > 0){
-                        System.out.println(e.attack(h));
+                        if (h.hasArmorItem() != -1) {
+                            System.out.println("Your armor blocks " + e.getName() + "'s attack.");
+                            h.dropItem(h.hasArmorItem());
+                        } else {
+                            System.out.println(e.attack(h));
+                        }
                     }
                 }
             }
             if (e.getHP() <= 0) {
                 System.out.println("You defeated " + e.getName());
                 h.pickUpItems(e.getItem());
-
                 return false;
             }
             if (h.getHP() <= 0){
@@ -191,39 +220,42 @@ public class Main {
 
         System.out.println("1. Buy Items\n2. Sell Items\n3. Exit store");
         int usrChoice = CheckInput.getIntRange(1, 3);
-        if (usrChoice == 1){
-            if (h.getGold() < ig.getPotion().getValue()){
-                System.out.println("You do not have enough gold to purchase any items, sell items "
-                        + "or adventure some more to get more gold.");
+        while(true){
+            if (usrChoice == 1) {
+                if (h.getGold() < ig.getPotion().getValue()) {
+                    System.out.println("You do not have enough gold to purchase any items, sell items "
+                            + "or adventure some more to get more gold.");
+                } else {
+                    System.out.println("1. Health Potion - 25 gold\n2. Key - 50 gold");
+                    usrChoice = CheckInput.getIntRange(1, 2);
+                    if (usrChoice == 1) {
+                        h.spendGold(ig.getPotion().getValue());
+                        h.pickUpItems(ig.getPotion());
+                    } else if (usrChoice == 2 && h.getGold() >= 50) {
+                        h.spendGold(ig.getKey().getValue());
+                        h.pickUpItems(ig.getKey());
+                    } else { // case when hero trys to buy key without enough gold
+                        System.out.println("You do not have enough gold to buy a key.");
+                    }
+                }
+            } else if (usrChoice == 2) {
+                h.itemsToString();
+                System.out.println("Which of your items would you like to sell?");
+                System.out.println(h.itemsToString());
+                usrChoice = CheckInput.getIntRange(1, h.getNumItems());
+                Item soldItem = h.dropItem(usrChoice - 1);
+                System.out
+                        .println("You have sold your " + soldItem.getName() + " for " + soldItem.getValue() + " gold.");
+                h.collectGold(soldItem.getValue());
+            } else {
+                System.out.println("You are now leaving the store.");
+                moveHero(h);
+                break;
             }
-            else{
-                System.out.println("1. Health Potion - 25 gold\n2. Key - 50 gold");
-                usrChoice = CheckInput.getIntRange(1, 2);
-                if(usrChoice == 1){
-                    h.spendGold(ig.getPotion().getValue());
-                    h.pickUpItems(ig.getPotion());
-                }
-                else if (usrChoice == 2 && h.getGold() >= 50){
-                    h.spendGold(ig.getKey().getValue());
-                    h.pickUpItems(ig.getKey());
-                }
-                else{ //case when hero trys to buy key without enough gold
-                    System.out.println("You do not have enough gold to buy a key.");
-                }
-            }
+            System.out.println("1. Buy Items\n2. Sell Items\n3. Exit store");
+            usrChoice = CheckInput.getIntRange(1, 3);
         }
-        else if (usrChoice == 2){
-            h.itemsToString();
-            System.out.println("Which of your items would you like to sell?");
-            usrChoice = CheckInput.getIntRange(1, h.getNumItems());
-            Item soldItem = h.dropItem(usrChoice);
-            System.out.println("You have sold your " +  soldItem.getName() + " for " + soldItem.getValue() + " gold.");
-            h.collectGold(soldItem.getValue());
-        }
-        else{
-            System.out.println("You are now leaving the store.");
-            moveHero(h);
-        }
+       
     }
 
     /**
