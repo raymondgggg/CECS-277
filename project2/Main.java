@@ -214,6 +214,11 @@ public class Main {
         }
     }
 
+    /**
+     * Method to handle all the interactions with 
+     * returning to start and going into the store
+     * @param h hero
+     */
     public static void store(Hero h){
         ItemGenerator ig = ItemGenerator.getInstance();
         System.out.println("You are at now at the store:");
@@ -256,7 +261,6 @@ public class Main {
             System.out.println("1. Buy Items\n2. Sell Items\n3. Exit store");
             usrChoice = CheckInput.getIntRange(1, 3);
         }
-       
     }
 
     /**
