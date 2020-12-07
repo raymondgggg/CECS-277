@@ -5,7 +5,6 @@ public class EnemyGenerator {
     private ItemGenerator ig;
 
     private static EnemyGenerator egInstance = null;
-
     /**Constructor - No longer reads from file, will initlize the 
      * ItemGenerator so that we can use it when we randomly generate one
      * of the four base enemies and decorate as needed in the generate 
@@ -54,5 +53,4 @@ public class EnemyGenerator {
             egInstance = new EnemyGenerator(ig);
         return egInstance;
     }
-    
 }

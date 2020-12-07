@@ -15,4 +15,16 @@ public abstract class EnemyDecorator extends Enemy{
         super(n, mHp, i);
         this.enemy = enemy;
     }
+
+    /**
+     * Method of handling the attack interaction between and Enemy object and
+     * another Entity
+     * 
+     * @param e the Entity to be attacked
+     * @return String representation of the attack interaction
+     */
+    @Override
+    public String attack(Entity e) {
+        return enemy.attack(e);
+    }
 }

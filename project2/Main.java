@@ -71,7 +71,7 @@ public class Main {
             //Final spot of map, move onto next map
             else if (map.getCharAtLoc(hero.getLocation()) == 'f') {
                 if (hero.hasKey()){
-                    System.out.println("Next level:\n");
+                    System.out.println("Next level: " + level + "\n");
                     level++;
                     map.loadMap(levels[(level - 1) % levels.length]);
                     hero.heal(hero.getMaxHP());
@@ -217,7 +217,7 @@ public class Main {
     public static void store(Hero h){
         ItemGenerator ig = ItemGenerator.getInstance();
         System.out.println("You are at now at the store:");
-
+        System.out.println("Your Gold: " + h.getGold());
         System.out.println("1. Buy Items\n2. Sell Items\n3. Exit store");
         int usrChoice = CheckInput.getIntRange(1, 3);
         while(true){
@@ -252,6 +252,7 @@ public class Main {
                 moveHero(h);
                 break;
             }
+            System.out.println("Your Gold: " + h.getGold());
             System.out.println("1. Buy Items\n2. Sell Items\n3. Exit store");
             usrChoice = CheckInput.getIntRange(1, 3);
         }

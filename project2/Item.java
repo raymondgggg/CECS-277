@@ -53,6 +53,10 @@ public class Item implements ItemPrototype{
         return this.value;
     }
 
+    /**
+     * Method to that returns a clone of the current object
+     * @return new object with same fields
+     */
     @Override
     public ItemPrototype clone(){
         return new Item(this);

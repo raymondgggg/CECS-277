@@ -1,14 +1,13 @@
 import java.util.concurrent.ThreadLocalRandom;
 /**Warlock Enemy type that will be used to decorate one of the base enemies */
 public class Warlock extends EnemyDecorator implements Magical {
-
     /**
      * Constructor that will decorate the passed in enemy type 
      * and turn them into warlock type
      * @param enemy
      */
     public Warlock(Enemy enemy) {
-        super(enemy, enemy.getName() + " Warlock ", enemy.getHP() + 1, enemy.getItem()); 
+        super(enemy, enemy.getName() + " Warlock", enemy.getHP() + 1, enemy.getItem()); 
     }
 
     /**
@@ -20,7 +19,6 @@ public class Warlock extends EnemyDecorator implements Magical {
      */
     @Override
     public String attack(Entity e) {
-        
         int randAttack = ThreadLocalRandom.current().nextInt(1, 4); // randomly determine the three types of possible
                                                                     // attacks
         String attack;
@@ -46,7 +44,7 @@ public class Warlock extends EnemyDecorator implements Magical {
     public String magicMissile(Entity e) {
         int randDamage = ThreadLocalRandom.current().nextInt(1, 6);
         e.takeDamage(randDamage);
-        return getName() + " shoots a blazing magic missle at " + e.getName() + " for " + randDamage + " damage";
+        return getName() + " shoots a blazing magic missle at " + e.getName() + " for " + randDamage + " damage"+ "\n" + super.attack(e);
     }
 
     /**
@@ -60,7 +58,7 @@ public class Warlock extends EnemyDecorator implements Magical {
     public String fireball(Entity e) {
         int randDamage = ThreadLocalRandom.current().nextInt(1, 6);
         e.takeDamage(randDamage);
-        return getName() + " shoots a heat seaking fireball at " + e.getName() + " for " + randDamage + " damage";
+        return getName() + " shoots a heat seaking fireball at " + e.getName() + " for " + randDamage + " damage" + "\n" + super.attack(e);
     }
 
     /**
@@ -74,7 +72,7 @@ public class Warlock extends EnemyDecorator implements Magical {
     public String thunderclap(Entity e) {
         int randDamage = ThreadLocalRandom.current().nextInt(1, 6);
         e.takeDamage(randDamage);
-        return getName() + " strikes with a thunder clap taking away " + randDamage + " health from " + e.getName();
+        return getName() + " strikes with a thunder clap taking away " + randDamage + " health from " + e.getName() + "\n" + super.attack(e);
     }
     
 }
