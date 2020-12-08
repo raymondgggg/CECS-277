@@ -4,13 +4,15 @@ import java.util.concurrent.ThreadLocalRandom;
  * types
  */
 public class Warrior extends EnemyDecorator {
+
     /**
      * Constructor that will decorate the passed in enemy with
      * the features that will turn enemy to warrior enemy type
      * @param enemy to be decorated
      */
     public Warrior(Enemy enemy) {
-        super(enemy, enemy.getName().concat(" Warrior"), enemy.getHP() + 2); // add warrior title to name and increase hp by 2
+        super(enemy, "Warrior", enemy.getHP() + 2); // add warrior title to name and increase hp by 2
+        
     }   
 
     /** 

@@ -7,7 +7,7 @@ public class Warlock extends EnemyDecorator implements Magical {
      * @param enemy
      */
     public Warlock(Enemy enemy) {
-        super(enemy, enemy.getName() + " Warlock", enemy.getHP() + 1);    
+        super(enemy, "Warlock", enemy.getHP() + 1);    
     }
 
     /**

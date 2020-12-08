@@ -71,8 +71,8 @@ public class Main {
             //Final spot of map, move onto next map
             else if (map.getCharAtLoc(hero.getLocation()) == 'f') {
                 if (hero.hasKey()){
-                    System.out.println("Next level: " + level + "\n");
                     level++;
+                    System.out.println("Next level: " + level + "\n");
                     map.loadMap(levels[(level - 1) % levels.length]);
                     hero.heal(hero.getMaxHP());
                     hero.useKey();
