@@ -1,5 +1,5 @@
 /**Item class to represent the items that will be used in the game */
-public class Item implements ItemPrototype{
+public class Item implements Cloneable{
     /**name of item */
     private String name;
     /**The amount that the item is worth at the store */
@@ -58,7 +58,7 @@ public class Item implements ItemPrototype{
      * @return new object with same fields
      */
     @Override
-    public ItemPrototype clone(){
+    public Object clone(){
         return new Item(this);
     }
 }

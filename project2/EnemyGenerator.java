@@ -20,8 +20,8 @@ public class EnemyGenerator {
      * @return Enemy randomly chosen from template
      */
     public Enemy generateEnemy(int lvl){
-       Enemy[] baseEnemies = {new Troll(this.ig.generateItem()), new Froglok(this.ig.generateItem()),
-                                new Orc(this.ig.generateItem()), new Goblin(this.ig.generateItem())};
+       Enemy[] baseEnemies = {new Troll(), new Froglok(),
+                                new Orc(), new Goblin()};
         
        int randEnemyIndex = ThreadLocalRandom.current().nextInt(baseEnemies.length);
     

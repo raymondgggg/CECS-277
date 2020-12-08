@@ -140,7 +140,6 @@ public class Main {
                     else{
                         System.out.println(e.attack(h));
                     }
-                   
                 }
             }
             else if (attack == 2){

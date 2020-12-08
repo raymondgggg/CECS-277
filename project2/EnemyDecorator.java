@@ -11,8 +11,8 @@ public abstract class EnemyDecorator extends Enemy{
      * @param mHp max hp
      * @param i item
      */
-    public EnemyDecorator(Enemy enemy,String n, int mHp, Item i) {
-        super(n, mHp, i);
+    public EnemyDecorator(Enemy enemy,String n, int mHp) {
+        super(n, mHp, enemy.getItem());
         this.enemy = enemy;
     }
 

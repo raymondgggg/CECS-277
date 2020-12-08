@@ -7,7 +7,7 @@ public class Warlock extends EnemyDecorator implements Magical {
      * @param enemy
      */
     public Warlock(Enemy enemy) {
-        super(enemy, enemy.getName() + " Warlock", enemy.getHP() + 1, enemy.getItem()); 
+        super(enemy, enemy.getName() + " Warlock", enemy.getHP() + 1);    
     }
 
     /**
@@ -74,5 +74,4 @@ public class Warlock extends EnemyDecorator implements Magical {
         e.takeDamage(randDamage);
         return getName() + " strikes with a thunder clap taking away " + randDamage + " health from " + e.getName() + "\n" + super.attack(e);
     }
-    
 }

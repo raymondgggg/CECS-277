@@ -1,7 +1,7 @@
 import java.util.concurrent.ThreadLocalRandom;
 
 /**Enemy class for the enemies in the game */
-public class Enemy extends Entity{
+public abstract class Enemy extends Entity{
     /**Enemy Item */
     private Item item;
 

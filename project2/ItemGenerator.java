@@ -66,5 +66,4 @@ public class ItemGenerator {
             igInstance = new ItemGenerator();
         return igInstance;
     }
-
 }

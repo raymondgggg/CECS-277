@@ -27,7 +27,7 @@ public class Hero extends Entity implements Magical{
      */
     @Override
     public String toString(){
-        return super.toString() + "\n" + itemsToString();
+        return super.toString() + "\n" + itemsToString() + "\n" + "Gold: " + this.gold;
     }
 
     /** Method to go through itemList and appends all items to string

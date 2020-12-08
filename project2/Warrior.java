@@ -10,8 +10,8 @@ public class Warrior extends EnemyDecorator {
      * @param enemy to be decorated
      */
     public Warrior(Enemy enemy) {
-        super(enemy, enemy.getName() + " Warrior", enemy.getHP() + 2, enemy.getItem()); // add warrior title to name and increase hp by 2
-    }
+        super(enemy, enemy.getName().concat(" Warrior"), enemy.getHP() + 2); // add warrior title to name and increase hp by 2
+    }   
 
     /** 
      * Overridden attack method that will cause enemy to do extra attack for each level 
