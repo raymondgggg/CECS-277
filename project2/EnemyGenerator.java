@@ -2,7 +2,7 @@ import java.util.concurrent.ThreadLocalRandom;
 /**class to generate enemies read from files */
 public class EnemyGenerator {
     /**items read from item file */
-    private ItemGenerator ig;
+    private ItemGenerator ig = ItemGenerator.getInstance();
 
     private static EnemyGenerator egInstance = null;
     /**Constructor - No longer reads from file, will initlize the 
@@ -10,11 +10,9 @@ public class EnemyGenerator {
      * of the four base enemies and decorate as needed in the generate 
      * enemy method
      */
-    private EnemyGenerator(ItemGenerator ig){
-        this.ig = ig;
+    private EnemyGenerator(){
     }
 
-    
     /** Method to randomly choose from enemyList and create new enemy based off the randomly chosen enemy
      *  return the new enemy
      * @return Enemy randomly chosen from template
@@ -48,9 +46,9 @@ public class EnemyGenerator {
      * @param ig item generator needed for the item of the enemey
      * @return instance of enemy generator
      */
-    public static EnemyGenerator getInstance(ItemGenerator ig){
+    public static EnemyGenerator getInstance(){
         if (egInstance == null)
-            egInstance = new EnemyGenerator(ig);
+            egInstance = new EnemyGenerator();
         return egInstance;
     }
 }

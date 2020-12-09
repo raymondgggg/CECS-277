@@ -20,7 +20,7 @@ public class Main {
         map.loadMap(levels[(level-1) % levels.length]); // use modulus operator to get num from [0-2] for index of levels array
         Hero hero = new Hero(name, map);
         ItemGenerator ig = ItemGenerator.getInstance();
-        EnemyGenerator eg = EnemyGenerator.getInstance(ig);
+        EnemyGenerator eg = EnemyGenerator.getInstance();
 
         //loop where the game takes place, prints out hero info and looks through map for 'm', 'i', or 'n'
         //to use appropriate methods for rooms
