@@ -1,5 +1,4 @@
-
-/*
+/*Group 2
   @author Brian Phung
   @author Raymond Guevara
   @version CECS 277 - Lab 14
@@ -8,11 +7,11 @@
 import java.util.Scanner;
 import java.util.Stack;
 /**Main class where the tic tac toe game is to be played */
-public class Main {
+public class Main{
     /**
      * Main method - history stack is created and user is prompted to place token, revert, 
      * or quit the epic game of tic tac toe.
-     * @param args
+     * @param args no command line arguments
      */
     public static void main(String[] args) {
         Stack<Memento> history = new Stack<Memento>();
@@ -35,7 +34,6 @@ public class Main {
                 System.out.print("Col: ");
                 int col = getIntRange(0, 2);
 
-                
                 while (b.placeToken(choices[currentChoice % choices.length], row, col) == false){
                     System.out.println("Token cannot be placed there, enter input again");
                     System.out.print("Row: ");

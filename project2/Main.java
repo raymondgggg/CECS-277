@@ -214,17 +214,18 @@ public class Main {
     }
 
     /**
-     * Method to handle all the interactions with 
-     * returning to start and going into the store
+     * Method to handle all the interactions with returning to start and going into
+     * the store
+     * 
      * @param h hero
      */
-    public static void store(Hero h){
+    public static void store(Hero h) {
         ItemGenerator ig = ItemGenerator.getInstance();
         System.out.println("You are at now at the store:");
         System.out.println("Your Gold: " + h.getGold());
         System.out.println("1. Buy Items\n2. Sell Items\n3. Exit store");
         int usrChoice = CheckInput.getIntRange(1, 3);
-        while(true){
+        while (true) {
             if (usrChoice == 1) {
                 if (h.getGold() < ig.getPotion().getValue()) {
                     System.out.println("You do not have enough gold to purchase any items, sell items "
@@ -243,14 +244,19 @@ public class Main {
                     }
                 }
             } else if (usrChoice == 2) {
-                h.itemsToString();
-                System.out.println("Which of your items would you like to sell?");
-                System.out.println(h.itemsToString());
-                usrChoice = CheckInput.getIntRange(1, h.getNumItems());
-                Item soldItem = h.dropItem(usrChoice - 1);
-                System.out
-                        .println("You have sold your " + soldItem.getName() + " for " + soldItem.getValue() + " gold.");
-                h.collectGold(soldItem.getValue());
+                int numItems = h.getNumItems();
+                if (numItems == 0) {
+                    System.out.println("You have no items.");
+                } else {
+                    h.itemsToString();
+                    System.out.println("Which of your items would you like to sell?");
+                    System.out.println(h.itemsToString());
+                    usrChoice = CheckInput.getIntRange(1, h.getNumItems());
+                    Item soldItem = h.dropItem(usrChoice - 1);
+                    System.out.println(
+                            "You have sold your " + soldItem.getName() + " for " + soldItem.getValue() + " gold.");
+                    h.collectGold(soldItem.getValue());
+                }
             } else {
                 System.out.println("You are now leaving the store.");
                 moveHero(h);
